@@ -9,7 +9,7 @@ import './styles/index.scss';
 const App = () => {
     const { theme } = useTheme();
     useEffect(() => {
-        if (Math.random() < 0.8) throw new Error();
+        // if (Math.random() < 0.8) throw new Error();
     }, []);
 
     return (
