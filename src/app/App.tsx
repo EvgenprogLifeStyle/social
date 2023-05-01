@@ -1,23 +1,18 @@
 import React, { Suspense, useEffect } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { NavBar } from 'widgets/NavBar';
-import { Sidebar } from 'widgets/Sidebar';
-import { AppRouter } from './providers/router';
-import { useTheme } from './providers/ThemeProvider';
 import './styles/index.scss';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { useTheme } from 'app/providers/ThemeProvider';
+import { AppRouter } from 'app/providers/router';
+import { Navbar } from 'widgets/Navbar';
+import { Sidebar } from 'widgets/Sidebar';
 
-const App = () => {
+function App() {
     const { theme } = useTheme();
-    useEffect(() => {
-        // if (Math.random() < 0.8) throw new Error();
-    }, []);
 
     return (
-        <div className={classNames('app', { hoverd: true, active: false }, [theme])}>
-
+        <div className={classNames('app', {}, [theme])}>
             <Suspense fallback="">
-                <NavBar />
-
+                <Navbar />
                 <div className="content-page">
                     <Sidebar />
                     <AppRouter />
@@ -25,6 +20,6 @@ const App = () => {
             </Suspense>
         </div>
     );
-};
+}
 
 export default App;

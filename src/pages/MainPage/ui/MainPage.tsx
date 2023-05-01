@@ -1,15 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { BagButton } from 'app/providers/errorBoundary';
 
 const MainPage = () => {
-    const { t } = useTranslation('main');
+    const { t } = useTranslation();
+
     return (
         <div>
-            <div>
-                <BagButton />
-                {t('Главная')}
-            </div>
+            {t('Главная страница')}
         </div>
     );
 };
