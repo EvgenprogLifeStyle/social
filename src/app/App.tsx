@@ -3,7 +3,7 @@ import './styles/index.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { AppRouter } from 'app/providers/router';
-import { NavBar } from 'widgetss/Navbar';
+// import { NavBar } from 'widgetss/Navbar';
 import { Sidebar } from 'widgetss/Sidebar';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
     return (
         <div className={classNames('app', {}, [theme])}>
             <Suspense fallback="">
-                <NavBar />
+                {/* <NavBar /> */}
                 <div className="content-page">
                     <Sidebar />
                     <AppRouter />
