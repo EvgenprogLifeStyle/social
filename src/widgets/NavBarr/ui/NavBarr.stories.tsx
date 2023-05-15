@@ -2,13 +2,11 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import ThemeDecorator from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import RouteDecorator from 'shared/config/storybook/RouteDecorator/RouteDecorator';
-import StyleDecorator from 'shared/config/storybook/StyleDecorator/StyleDecorator';
-import { NavBar } from './NavBar';
+import { NavBarr } from './NavBarr';
 
-const meta: Meta<typeof NavBar> = {
+const meta: Meta<typeof NavBarr> = {
     title: 'widget/NavBar',
-    component: NavBar,
+    component: NavBarr,
     tags: ['autodocs'],
 
     argTypes: {
@@ -17,7 +15,7 @@ const meta: Meta<typeof NavBar> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof NavBar>;
+type Story = StoryObj<typeof NavBarr>;
 
 export const Light: Story = {
     args: {},
