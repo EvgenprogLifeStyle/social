@@ -30,4 +30,4 @@ jobs:
       - name: build storybook
         run: npm run storybook:build
       - name: screenshot testing
-        run: brew install graphicsmagick && npx loki --requireReference update --reactUri file:./storybook-static
+        run: npm run test:ui:ci
