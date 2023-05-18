@@ -6,7 +6,7 @@ on:
     branches: [ master ]
 jobs:
   pipeline:
-    runs-on: windows-2019
+    runs-on: windows
     strategy:
       matrix:
         node-version: [ 16.x ]
@@ -20,20 +20,19 @@ jobs:
       - name: install modules
         run: npm install
       - name: build production project
-        if: always()
         run: npm run build:prod
+        if: always()
       - name: linting typescript
-        if: always()
         run: npm run lint:ts
-      - name: linting css
         if: always()
+      - name: linting css
         run: npm run lint:scss
       - name: unit testing
         if: always()
         run: npm run test:unit
       - name: build storybook
-        if: always()
         run: npm run storybook:build
-      - name: screenshot testing
         if: always()
+      - name: screenshot testing
         run: npm run test:ui:ci
+        if: always()
