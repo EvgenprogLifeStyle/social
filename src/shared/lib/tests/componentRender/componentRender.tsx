@@ -15,7 +15,7 @@ export function componentRender(component:ReactNode, options:componentRenderOpti
     } = options;
 
     return render(
-        <MemoryRouter initialEntries={[]}>
+        <MemoryRouter initialEntries={[route]}>
             <I18nextProvider i18n={i18nForTesting}>
                 {component}
             </I18nextProvider>
