@@ -7,6 +7,12 @@
     right: 0;
     top: 0;
     z-index: -1;
+    color: var(--primary-color);
+}
+
+.Modal.dark {
+    --bg-color: #090949;
+    --primary-color: #04ff04;
 }
 
 .overlay {
@@ -25,6 +31,12 @@
     padding: 20px;
     transform: scale(0.5);
     transition: 0.3s transform;
+}
+
+.isClosing {
+    .content {
+        transform: scale(0.2);
+    }
 }
 
 .opened {

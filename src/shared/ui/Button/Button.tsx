@@ -3,10 +3,12 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import s from './Button.module.scss';
 
 export enum ButtonTheme{
-    CLEAR='clear',
-    OUTLINE='outline',
-    BACKGROUND='background',
-    BACKGROUND_INVERTED='backgroundInverted'
+    CLEAR = 'clear',
+    CLEAR_INVERTED = 'clearInverted',
+    OUTLINE = 'outline',
+    BACKGROUND = 'background',
+    BACKGROUND_INVERTED = 'backgroundInverted'
+
 }
 export enum ButtonSize{
     M='size_m',
