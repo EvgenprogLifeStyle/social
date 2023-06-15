@@ -75,12 +75,6 @@ export const Input = memo((props: InputProps) => {
                         />
                     )}
             </div>
-            <input
-                type={type}
-                value={value}
-                className={s.input}
-                onChange={onChangeHandler}
-            />
 
         </div>
     );

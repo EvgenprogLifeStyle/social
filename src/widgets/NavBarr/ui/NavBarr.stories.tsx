@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import ThemeDecorator from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
+import StoreDecorator from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { NavBarr } from './NavBarr';
 
 const meta: Meta<typeof NavBarr> = {
@@ -17,12 +18,17 @@ const meta: Meta<typeof NavBarr> = {
 export default meta;
 type Story = StoryObj<typeof NavBarr>;
 
-export const Light: Story = {
+export const Light: Story = {};
+Light.decorators = [StoreDecorator({})];
+
+export const Dark: Story = {};
+Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})];
+
+export const AuthNavbar: Story = {
     args: {},
 };
-
-export const Dark: Story = {
-    args: {},
-};
-
-Dark.decorators = [ThemeDecorator(Theme.DARK)];
+AuthNavbar.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
+    user: {
+        authDate: {},
+    },
+})];
