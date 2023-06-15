@@ -12,6 +12,9 @@ i18n
             escapeValue: false, // not needed for react!!
         },
         resources: { ru: { translations: {} } },
+        react: {
+            useSuspense: false,
+        },
     });
 
 export default i18n;
