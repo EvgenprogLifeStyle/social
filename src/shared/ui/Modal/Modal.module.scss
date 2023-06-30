@@ -1,0 +1,50 @@
+.Modal {
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: -1;
+    color: var(--primary-color);
+}
+
+.Modal.dark {
+    --bg-color: #090949;
+    --primary-color: #04ff04;
+}
+
+.overlay {
+    align-items: center;
+    background: var(--overlay-color);
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+}
+
+.content {
+    background: var(--bg-color);
+    border-radius: 12px;
+    max-width: 60%;
+    padding: 20px;
+    transform: scale(0.5);
+    transition: 0.3s transform;
+}
+
+.isClosing {
+    .content {
+        transform: scale(0.2);
+    }
+}
+
+.opened {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: var(--modal-z-index);
+
+    .content {
+        transform: scale(1);
+    }
+}
