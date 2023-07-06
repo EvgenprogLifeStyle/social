@@ -3,6 +3,7 @@
   "Тест": "Test",
   "О сайте": "About",
   "Главная": "Home",
+  "Профиль": "Profile",
   "Страница не найдена": "Page Not Found",
   "Произошла ошибка ": "Произошла ошибка ",
   "Обновить страницу ": "Обновить страницу ",
@@ -13,6 +14,6 @@
   "Войти": "Login",
   "Выйти": "Exit",
   "Введите пароль": "Введите пароль",
-  "Вы ввели некорректный логин или пароль": "You entered an incorrect username or password'"
-
+  "Вы ввели некорректный логин или пароль": "You entered an incorrect username or password'",
+  "Profile Page": "Profile Page"
 }
