@@ -1,9 +1,9 @@
 export enum Current {
-    "RUB"="RUB",
-    "USD"="USD",
-    "EUR"="EUR"
+    RUB='RUB',
+    USD='USD',
+    EUR='EUR'
 }
 export enum Country {
-    "Russia"="Russia",
-    "Belarus"="Belarus"
+    Russia='Russia',
+    Belarus='Belarus'
 }

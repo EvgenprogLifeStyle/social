@@ -1,4 +1,4 @@
-import {Country, Current} from "shared/const/common";
+import { Country, Current } from 'shared/const/common';
 
 export interface Profile{
     first: string,
@@ -11,10 +11,9 @@ export interface Profile{
     avatar: string
 }
 
-
 export interface ProfileSchema{
     data?:Profile,
     isLoading:boolean,
-    error: string,
+    error: string | undefined,
     readonly: boolean
 }

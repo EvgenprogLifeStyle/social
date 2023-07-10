@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
 import s from './Text.module.scss';
-import {memo} from "react";
 
 export enum TextTheme {
     PRIMARY = 'primary',

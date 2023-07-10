@@ -1,4 +1,4 @@
-import {FC, memo, ReactNode} from 'react';
+import { FC, memo, ReactNode } from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
 import s from './AppLink.module.scss';
