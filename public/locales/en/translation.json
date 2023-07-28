@@ -5,15 +5,17 @@
   "Главная": "Home",
   "Профиль": "Profile",
   "Страница не найдена": "Page Not Found",
-  "Произошла ошибка ": "Произошла ошибка ",
-  "Обновить страницу ": "Обновить страницу ",
+  "Произошла ошибка ": "An error has occurred",
+  "Обновить страницу ": "Refresh the page",
   "throw new Error": "throw new Error",
-  "Переключение": "Переключение",
+  "Переключение": "Switching",
   "Короткий язык": "En",
-  "Форма авторизации": "Форма авторизации",
+  "Форма авторизации": "Authorization form",
   "Войти": "Login",
   "Выйти": "Exit",
-  "Введите пароль": "Введите пароль",
+  "Введите пароль": "Enter password",
   "Вы ввели некорректный логин или пароль": "You entered an incorrect username or password'",
-  "Profile Page": "Profile Page"
+  "Profile Page": "Profile Page",
+  "Отменить": "Cancel",
+  "Укажите валюту": "Specify currency"
 }
