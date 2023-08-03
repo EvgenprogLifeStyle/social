@@ -1,7 +1,7 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {fetchProfileData} from 'entities/Profile';
-import {Profile, ProfileSchema} from '../types/profile';
-import {updateProfileDate} from "../services/updateProfileDate/updateProfileDate";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { fetchProfileData } from 'entities/Profile';
+import { Profile, ProfileSchema } from '../types/profile';
+import { updateProfileDate } from '../services/updateProfileDate/updateProfileDate';
 
 const initialState: ProfileSchema = {
     readonly: true,
@@ -17,16 +17,16 @@ export const profileSlice = createSlice({
         setReadonly: (state, action:PayloadAction<boolean>) => {
             state.readonly = action.payload;
         },
-        cancelEdit:(state) => {
+        cancelEdit: (state) => {
             state.readonly = true;
-            state.form = state.data
+            state.validateErrors = undefined;
+            state.form = state.data;
         },
         updateProfile: (state, action:PayloadAction<Profile>) => {
             state.form = {
                 ...state.form, ...action.payload,
             };
         },
-
     },
     extraReducers: (builder) => {
         builder
@@ -47,7 +47,7 @@ export const profileSlice = createSlice({
                 state.error = action.payload;
             })
             .addCase(updateProfileDate.pending, (state, action) => {
-                state.error = undefined;
+                state.validateErrors = undefined;
                 state.isLoading = true;
             })
             .addCase(updateProfileDate.fulfilled, (
@@ -58,10 +58,11 @@ export const profileSlice = createSlice({
                 state.data = action.payload;
                 state.form = action.payload;
                 state.readonly = true;
+                state.validateErrors = undefined;
             })
             .addCase(updateProfileDate.rejected, (state, action) => {
                 state.isLoading = false;
-                state.error = action.payload;
+                state.validateErrors = action.payload;
             });
     },
 });

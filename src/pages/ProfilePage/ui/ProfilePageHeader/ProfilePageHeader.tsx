@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { TextBlock } from 'shared/ui/Text/Text';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
-import {getProfileReadonly, profileActions, updateProfileDate} from 'entities/Profile';
+import { getProfileReadonly, profileActions, updateProfileDate } from 'entities/Profile';
 import { useCallback } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/UseAppDispatch/UseAppDispatch';
 import s from './ProfilePageHeader.module.scss';
@@ -33,11 +33,7 @@ export const ProfilePageHeader = ({ className }:ProfilePageHeaderProps) => {
         <div className={classNames(s.ProfilePageHeader, {}, [className])}>
             <TextBlock title={t('Профиль')} />
             {readonly ? (
-                <Button
-                    className={s.editBtn}
-                    theme={ButtonTheme.OUTLINE}
-                    onClick={onEdit}
-                >
+                <Button className={s.editBtn} theme={ButtonTheme.OUTLINE} onClick={onEdit}>
                     {t('Редактировать')}
                 </Button>
             )
@@ -51,7 +47,6 @@ export const ProfilePageHeader = ({ className }:ProfilePageHeaderProps) => {
                             {t('Отменить')}
                         </Button>
                         <Button
-
                             theme={ButtonTheme.OUTLINE}
                             onClick={onSave}
                         >

@@ -1,6 +1,14 @@
 import { Country } from 'entities/Country';
 import { Current } from 'entities/Current/intex';
 
+export enum ValidateProfileError {
+    INCORECT_USER_DATA='INCORECT_USER_DATA',
+    INCORECT_AGE='INCORECT_AGE',
+    INCORECT_COUNTRY='INCORECT_COUNTRY',
+    NO_DATA='NO_DATA',
+    SERVER_ERROR='SERVER_ERROR'
+}
+
 export interface Profile{
     first?: string,
     lastname?: string,
@@ -17,5 +25,6 @@ export interface ProfileSchema{
     form?: Profile,
     isLoading:boolean,
     error: string | undefined,
-    readonly: boolean
+    readonly: boolean,
+    validateErrors?:ValidateProfileError[]
 }

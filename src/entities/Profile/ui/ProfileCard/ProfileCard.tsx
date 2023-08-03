@@ -5,13 +5,10 @@ import { Input } from 'shared/ui/Input/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Profile } from 'entities/Profile';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
-import s from './ProfileCard.module.scss';
 import { Select } from 'shared/ui/Select/Select';
 import { Current, CurrentSelect } from 'entities/Current/intex';
 import { Country, CountrySelect } from 'entities/Country';
-
-
-
+import s from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
     className?: string
@@ -25,7 +22,7 @@ interface ProfileCardProps {
     onChangeCity?: (value?: string) => void
     onChangeUsername?: (value?:string) => void
     onChangeAvatar?: (value?:string) => void
-    onChangeCurrent?: (current?:Current  | undefined) => void
+    onChangeCurrent?: (current?:Current | undefined) => void
     onChangeCountry?: (country?:Country | undefined) => void
 }
 
@@ -35,7 +32,7 @@ export const ProfileCard = (props :ProfileCardProps) => {
     } = props;
     const { t } = useTranslation('profile');
 
-    console.log(typeof Current.RUB)
+    console.log(typeof Current.RUB);
     // console.log(typeof data?.age)
     if (isLoading) {
         return (
@@ -118,16 +115,18 @@ export const ProfileCard = (props :ProfileCardProps) => {
                     onChange={onChangeAvatar}
                     readonly={readonly}
                 />
-               <CurrentSelect
-                   className={s.input}
-                   value={data?.currency}
-                   onChange={onChangeCurrent}
-                   readonly={readonly} />
+                <CurrentSelect
+                    className={s.input}
+                    value={data?.currency}
+                    onChange={onChangeCurrent}
+                    readonly={readonly}
+                />
                 <CountrySelect
-                   className={s.input}
-                   value={data?.country}
-                   onChange={onChangeCountry}
-                   readonly={readonly} />
+                    className={s.input}
+                    value={data?.country}
+                    onChange={onChangeCountry}
+                    readonly={readonly}
+                />
             </div>
         </div>
     );

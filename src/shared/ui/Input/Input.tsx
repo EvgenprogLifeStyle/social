@@ -1,4 +1,4 @@
-import {classNames, Mods} from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import React, {
     InputHTMLAttributes, memo, useEffect, useRef, useState,
 } from 'react';
@@ -51,12 +51,12 @@ export const Input = memo((props: InputProps) => {
         setCaretPosition(e?.target?.selectionStart || 0);
     };
 
-    const isCaretVisible = isFocused && !readonly
+    const isCaretVisible = isFocused && !readonly;
     const mods:Mods = {
-        [s.readonly]: readonly
-    }
+        [s.readonly]: readonly,
+    };
     return (
-        <div className={classNames(s.InputWrapper, mods, [className])} >
+        <div className={classNames(s.InputWrapper, mods, [className])}>
             {placeholder && (
                 <div className={s.placeholder}>
                     {`${placeholder}>`}

@@ -1,5 +1,5 @@
-import type {Meta, StoryObj} from '@storybook/react';
-import {CurrentSelect} from './CurrentSelect';
+import type { Meta, StoryObj } from '@storybook/react';
+import { CurrentSelect } from './CurrentSelect';
 
 const meta: Meta<typeof CurrentSelect> = {
     title: 'entities/CurrentSelect',

@@ -1,5 +1,5 @@
-import {classNames, Mods} from 'shared/lib/classNames/classNames';
-import {memo} from 'react';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import { memo } from 'react';
 import s from './Text.module.scss';
 
 export enum TextTheme {
@@ -31,8 +31,8 @@ export const TextBlock = memo((props: TextProps) => {
 
     const mods:Mods = {
         [s[theme]]: true,
-        [s[align]]: true
-    }
+        [s[align]]: true,
+    };
     return (
         <div className={classNames(s.Text, mods, [className])}>
             {title && <p className={s.title}>{title}</p>}
