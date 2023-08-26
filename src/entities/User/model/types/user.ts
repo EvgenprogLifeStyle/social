@@ -4,5 +4,7 @@ export interface User {
 }
 
 export interface UserSchema{
-    authDate?: User
+    authDate?: User,
+    _inited: boolean
+
 }
