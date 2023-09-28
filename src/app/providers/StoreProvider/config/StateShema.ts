@@ -9,6 +9,7 @@ import { AxiosInstance } from 'axios';
 import { To } from 'history';
 import { NavigateOptions } from 'react-router';
 import { ArticleDetailSchema } from 'entities/Article';
+import { ArticleDetailsCommentsSchema } from 'pages/ArticlesDetailPage';
 
 export interface StateSchema {
     counter:CounterSchema,
@@ -17,7 +18,8 @@ export interface StateSchema {
     // Асинхронные редюсеры
     loginForm?: LoginSchema,
     profile?:ProfileSchema,
-    articleDetails?:ArticleDetailSchema
+    articleDetails?:ArticleDetailSchema,
+    articleDetailsComments?: ArticleDetailsCommentsSchema
 }
 export type StateSchemaKey = keyof StateSchema
 
