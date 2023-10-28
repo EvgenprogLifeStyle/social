@@ -7,9 +7,9 @@ import { UserInitEffect } from 'shared/lib/hooks/userInitEffect/userInitEffect';
 import { useAppDispatch } from 'shared/lib/hooks/UseAppDispatch/UseAppDispatch';
 import { useSelector } from 'react-redux';
 import { Page } from 'shared/ui/Page/Page';
-import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { TextBlock, TextTheme } from 'shared/ui/Text/Text';
-import { fetchArticlesList } from '../model/services/fetchArticlesList';
+import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+import { initActionPage } from '../model/services/initActionPage/initActionPage';
 import {
     getArticlesListError,
     getArticlesListIsLoading,
@@ -31,19 +31,18 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
     const isLoading = useSelector(getArticlesListIsLoading);
     const view = useSelector(getArticlesListView);
     const error = useSelector(getArticlesListError);
+
     const onChangeView = useCallback((view: ArticleView) => {
         dispatch(articlePageSliceActions.setView(view));
     }, [dispatch]);
 
     const onLoadNextPart = useCallback(() => {
+
         dispatch(fetchNextArticlesPage());
     }, [dispatch]);
 
     UserInitEffect(() => {
-        dispatch(articlePageSliceActions.initState());
-        dispatch(fetchArticlesList({
-            page: 1,
-        }));
+        dispatch(initActionPage());
     });
     if (error) {
         return (
@@ -54,7 +53,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
     }
 
     return (
-        <DynamicModuleLoader reducers={reducers}>
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
             <Page onScrollEnd={onLoadNextPart} className={classNames('', {}, [className])}>
                 <ArticleViewSelector view={view} onViewClick={onChangeView} />
                 <ArticleList

@@ -1,16 +1,13 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from 'app/providers/StoreProvider/config/StateShema';
+import {createAsyncThunk} from '@reduxjs/toolkit';
+import {ThunkConfig} from 'app/providers/StoreProvider/config/StateShema';
 import {
     getArticlesListHasMore,
     getArticlesListIsLoading,
     getArticlesListPage,
 } from '../../selectors/articlePageSelectors';
-import { articlePageSliceActions } from '../../slices/articlePageSlice';
-import { fetchArticlesList } from '../../services/fetchArticlesList';
+import {articlePageSliceActions} from '../../slices/articlePageSlice';
+import {fetchArticlesList} from '../../services/fetchArticlesList';
 
-interface FetchArticlesListProps {
-    page?: number
-}
 
 export const fetchNextArticlesPage = createAsyncThunk<void,
     void,
@@ -30,3 +27,4 @@ export const fetchNextArticlesPage = createAsyncThunk<void,
             }
         },
     );
+
