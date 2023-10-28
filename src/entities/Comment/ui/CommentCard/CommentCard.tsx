@@ -4,12 +4,14 @@ import { memo } from 'react';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { TextBlock } from 'shared/ui/Text/Text';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Comment } from '../../model/types/comment';
 import s from './CommentCard.module.scss';
 
 interface CommentCardProps {
     className?: string
-    comment: Comment
+    comment?: Comment
     isLoading?: boolean
 }
 
@@ -30,11 +32,11 @@ export const CommentCard = memo((props: CommentCardProps) => {
     }
     return (
         <div className={classNames(s.CommentCard, {}, [className])}>
-            <div className={s.header}>
-                {comment.user?.avatar && <Avatar size={30} src={comment.user?.avatar} />}
-                <TextBlock className={s.username} title={comment.user.username} />
-            </div>
-            <TextBlock className={s.text} text={comment.text} />
+            <AppLink className={s.header} to={`${RoutePath.profile}${comment?.user.id}`}>
+                {comment?.user?.avatar && <Avatar size={30} src={comment.user?.avatar} />}
+                <TextBlock className={s.username} title={comment?.user.username} />
+            </AppLink>
+            <TextBlock className={s.text} text={comment?.text} />
         </div>
     );
 });

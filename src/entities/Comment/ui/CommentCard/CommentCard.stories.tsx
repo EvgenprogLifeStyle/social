@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { CommentCard } from './CommentCard';
 
 const meta: Meta<typeof CommentCard> = {
-    title: 'shared/CommentCard',
+    title: 'entities/Comment/CommentCard',
     component: CommentCard,
     tags: ['autodocs'],
     argTypes: {
@@ -15,5 +15,23 @@ export default meta;
 type Story = StoryObj<typeof CommentCard>;
 
 export const Primary: Story = {
-    args: {},
+    args: {
+        comment:
+            {
+                id: '1',
+                text: 'some comment',
+                user: { id: '1', username: 'admin' },
+            },
+    },
+};
+export const Loading: Story = {
+    args: {
+        comment:
+            {
+                id: '1',
+                text: 'some comment',
+                user: { id: '1', username: 'admin' },
+            },
+        isLoading: true,
+    },
 };

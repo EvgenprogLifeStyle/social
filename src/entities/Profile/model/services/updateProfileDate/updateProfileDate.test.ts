@@ -16,6 +16,7 @@ const data = {
     country: Country.Belarus,
     first: 'asd',
     city: Current.RUB,
+    id: '1',
 };
 describe('updateProfileDate.test', () => {
     test('success', async () => {

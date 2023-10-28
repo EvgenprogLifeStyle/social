@@ -1,18 +1,23 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { ArticleDetails } from 'entities/Article';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { TextBlock } from 'shared/ui/Text/Text';
 import { CommentList } from 'entities/Comment';
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useSelector } from 'react-redux';
 import { UserInitEffect } from 'shared/lib/hooks/userInitEffect/userInitEffect';
-import { fetchCommentsByArticleId } from 'pages/ArticlesDetailPage/model/services/fetchCommentsByArticleId';
 import { useAppDispatch } from 'shared/lib/hooks/UseAppDispatch/UseAppDispatch';
+import { AddCommentForm } from 'features/addCommentForm';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { Page } from 'shared/ui/Page/Page';
+import { addCommentForArticle } from '../model/services/addCommentForArticle';
+import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId';
 import s from './ArticlesDetailPage.module.scss';
-import { articleDetailsCommentsReducers, getArticleComments } from '../model/services/ArticleDetailsCommentsSlice';
-import { getArticleCommentIsLoading } from '../model/selectors/comments';
+import { getArticleCommentsIsLoading } from '../model/selectors/comments';
+import { articleDetailsCommentsReducers, getArticleComments } from '../model/slices/ArticleDetailsCommentsSlice';
 
 interface ArticlesDetailPageProps {
     className?: string
@@ -25,10 +30,19 @@ const reducer: ReducerList = {
 const ArticlesDetailPage = ({ className }: ArticlesDetailPageProps) => {
     const { t } = useTranslation('article-details');
     const { id } = useParams<{ id: string }>();
-    const comments = useSelector(getArticleComments.selectAll);
-    const commentsIsLoading = useSelector(getArticleCommentIsLoading);
     const dispatch = useAppDispatch();
-    console.log(commentsIsLoading);
+    const comments = useSelector(getArticleComments.selectAll);
+    const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
+    const navigate = useNavigate();
+
+    const onSendComment = useCallback((text: string) => {
+        dispatch(addCommentForArticle(text));
+    }, [dispatch]);
+
+    const onBackToList = useCallback(() => {
+        navigate(RoutePath.articles);
+    }, [navigate]);
+
     UserInitEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
     });
@@ -42,15 +56,20 @@ const ArticlesDetailPage = ({ className }: ArticlesDetailPageProps) => {
     }
 
     return (
-        <DynamicModuleLoader reducers={reducer} removeAfterUnmount>
-            <div className={classNames(s.ArticlesDetailPage, {}, [className])}>
+        <DynamicModuleLoader reducers={reducer}>
+            <Page className={classNames('', {}, [className])}>
+                <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
+                    {t('Назад к списку')}
+
+                </Button>
                 <ArticleDetails id={id} />
                 <TextBlock title={t('Комментарии')} className={s.commentTitle} />
+                <AddCommentForm onSendComment={onSendComment} />
                 <CommentList
                     isLoading={commentsIsLoading}
                     comments={comments}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };

@@ -17,5 +17,7 @@
   "Вы ввели некорректный логин или пароль": "You entered an incorrect username or password'",
   "Profile Page": "Profile Page",
   "Отменить": "Cancel",
-  "Укажите валюту": "Specify currency"
+  "Укажите валюту": "Specify currency",
+  "Введите текст комментария": "Введите текст комментария",
+  "Отправить": "Отправить"
 }

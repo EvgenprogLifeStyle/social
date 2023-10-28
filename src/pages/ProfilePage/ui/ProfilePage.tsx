@@ -5,7 +5,8 @@ import {
     fetchProfileData,
     getProfileError,
     getProfileForm,
-    getProfileLoading, getProfileReadonly,
+    getProfileLoading,
+    getProfileReadonly,
     getProfileValidateErrors,
     profileActions,
     ProfileCard,
@@ -13,12 +14,15 @@ import {
     ValidateProfileError,
 } from 'entities/Profile';
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { ProfilePageHeader } from 'pages/ProfilePage/ui/ProfilePageHeader/ProfilePageHeader';
 import { Current } from 'entities/Current/intex';
 import { Country } from 'entities/Country';
 import { TextBlock, TextTheme } from 'shared/ui/Text/Text';
+import { UserInitEffect } from 'shared/lib/hooks/userInitEffect/userInitEffect';
+import { useParams } from 'react-router-dom';
+import { Page } from 'shared/ui/Page/Page';
 
 const reducers: ReducerList = {
     profile: profileReducer,
@@ -31,7 +35,7 @@ interface ProfilePageProps {
 const ProfilePage = ({ className }: ProfilePageProps) => {
     const { t } = useTranslation('profile');
     const dispatch = useAppDispatch();
-
+    const { id } = useParams<{ id: string }>();
     const formData = useSelector(getProfileForm);
     const isLoading = useSelector(getProfileLoading);
     const error = useSelector(getProfileError);
@@ -45,15 +49,17 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
         [ValidateProfileError.INCORECT_COUNTRY]: t('Некорректный регион'),
         [ValidateProfileError.NO_DATA]: t('Данные не указаны'),
     };
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') dispatch(fetchProfileData());
-    }, [dispatch]);
+    UserInitEffect(() => {
+        if (id) {
+            dispatch(fetchProfileData(id));
+        }
+    });
 
-    const onChangeFirstname = useCallback((value:string | undefined) => {
+    const onChangeFirstname = useCallback((value: string | undefined) => {
         dispatch(profileActions.updateProfile({ first: value || '' }));
     }, [dispatch]);
 
-    const onChangeLastname = useCallback((value:string | undefined) => {
+    const onChangeLastname = useCallback((value: string | undefined) => {
         dispatch(profileActions.updateProfile({ lastname: value || '' }));
     }, [dispatch]);
 
@@ -83,7 +89,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <div className={classNames('', {}, [className])}>
+            <Page className={classNames('', {}, [className])}>
                 <ProfilePageHeader />
                 {validateErrors?.length
                     && validateErrors.map((error) => (
@@ -107,7 +113,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
                     onChangeCurrent={onChangeCurrent}
                     onChangeCountry={onChangeCountry}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };
