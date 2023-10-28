@@ -37,7 +37,6 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
     }, [dispatch]);
 
     const onLoadNextPart = useCallback(() => {
-
         dispatch(fetchNextArticlesPage());
     }, [dispatch]);
 
