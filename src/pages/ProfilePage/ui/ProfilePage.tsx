@@ -20,7 +20,7 @@ import { ProfilePageHeader } from 'pages/ProfilePage/ui/ProfilePageHeader/Profil
 import { Current } from 'entities/Current/intex';
 import { Country } from 'entities/Country';
 import { TextBlock, TextTheme } from 'shared/ui/Text/Text';
-import { UserInitEffect } from 'shared/lib/hooks/userInitEffect/userInitEffect';
+import { useInitEffect } from 'shared/lib/hooks/userInitEffect/useInitEffect';
 import { useParams } from 'react-router-dom';
 import { Page } from 'shared/ui/Page/Page';
 
@@ -49,7 +49,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
         [ValidateProfileError.INCORECT_COUNTRY]: t('Некорректный регион'),
         [ValidateProfileError.NO_DATA]: t('Данные не указаны'),
     };
-    UserInitEffect(() => {
+    useInitEffect(() => {
         if (id) {
             dispatch(fetchProfileData(id));
         }

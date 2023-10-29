@@ -3,7 +3,7 @@ import { memo, useCallback } from 'react';
 import { ArticleList, ArticleViewSelector } from 'entities/Article';
 import { ArticleView } from 'entities/Article/model/types/article';
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { UserInitEffect } from 'shared/lib/hooks/userInitEffect/userInitEffect';
+import { useInitEffect } from 'shared/lib/hooks/userInitEffect/useInitEffect';
 import { useAppDispatch } from 'shared/lib/hooks/UseAppDispatch/UseAppDispatch';
 import { useSelector } from 'react-redux';
 import { Page } from 'shared/ui/Page/Page';
@@ -40,7 +40,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
         dispatch(fetchNextArticlesPage());
     }, [dispatch]);
 
-    UserInitEffect(() => {
+    useInitEffect(() => {
         dispatch(initActionPage());
     });
     if (error) {

@@ -6,16 +6,16 @@ import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthByUsername';
 import { ProfileSchema } from 'entities/Profile';
 import { AxiosInstance } from 'axios';
-import { To } from 'history';
-import { NavigateOptions } from 'react-router';
 import { ArticleDetailSchema } from 'entities/Article';
 import { ArticleDetailsCommentsSchema } from 'pages/ArticlesDetailPage';
 import { AddCommentFormSchema } from 'features/addCommentForm';
 import { ArticlesPageSchema } from 'pages/ArticlesPage/model/types/articlePage';
+import { ScrollSaveSchema } from 'features/ScrollSave';
 
 export interface StateSchema {
     counter:CounterSchema,
     user: UserSchema,
+    saveScroll: ScrollSaveSchema,
 
     // Асинхронные редюсеры
     loginForm?: LoginSchema,
@@ -27,6 +27,7 @@ export interface StateSchema {
 }
 export type StateSchemaKey = keyof StateSchema
 export type MountedReducers = OptionRecord<StateSchemaKey, boolean>
+
 export interface ReducerManager {
     getReducerMap: () => ReducersMapObject<StateSchema>,
     reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>,

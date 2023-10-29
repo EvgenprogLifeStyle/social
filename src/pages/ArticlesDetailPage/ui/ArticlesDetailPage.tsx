@@ -7,7 +7,7 @@ import { TextBlock } from 'shared/ui/Text/Text';
 import { CommentList } from 'entities/Comment';
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useSelector } from 'react-redux';
-import { UserInitEffect } from 'shared/lib/hooks/userInitEffect/userInitEffect';
+import { useInitEffect } from 'shared/lib/hooks/userInitEffect/useInitEffect';
 import { useAppDispatch } from 'shared/lib/hooks/UseAppDispatch/UseAppDispatch';
 import { AddCommentForm } from 'features/addCommentForm';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
@@ -43,7 +43,7 @@ const ArticlesDetailPage = ({ className }: ArticlesDetailPageProps) => {
         navigate(RoutePath.articles);
     }, [navigate]);
 
-    UserInitEffect(() => {
+    useInitEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
     });
 
