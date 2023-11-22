@@ -1,6 +1,9 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { memo } from 'react';
 import { ArticleItemSkeleton } from 'entities/Article/ui/ArticleItem/ArticleItemSkeleton';
+import { Page } from 'shared/ui/Page/Page';
+import { TextBlock, TextSize, TextTheme } from 'shared/ui/Text/Text';
+import { useTranslation } from 'react-i18next';
 import { ArticleItem } from '../ArticleItem/ArticleItem';
 import s from './ArticleList.module.scss';
 import { ArticleSchema, ArticleView } from '../../model/types/article';
@@ -20,12 +23,21 @@ const getSkeletons = (view: ArticleView) => new Array(view === ArticleView.SMALL
     ));
 
 export const ArticleList = memo((props: ArticleListProps) => {
+    const { t } = useTranslation();
     const {
         className, articles, isLoading, view = ArticleView.SMALL,
     } = props;
     const renderArticle = (article: ArticleSchema) => (
         <ArticleItem article={article} isLoading={isLoading} view={view} key={article.id} className={s.card} />
     );
+
+    if (!isLoading && !articles.length) {
+        return (
+            <div className={classNames('', {}, [className])}>
+                <TextBlock text={t('Статьи не найдены')} theme={TextTheme.PRIMARY} size={TextSize.L} />
+            </div>
+        );
+    }
 
     return (
         <div className={classNames('', {}, [className, s[view]])}>

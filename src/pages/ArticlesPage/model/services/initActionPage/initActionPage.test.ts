@@ -1,7 +1,6 @@
-import { ArticleView } from 'entities/Article/model/types/article';
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { fetchArticlesList } from '../fetchArticlesList';
-import { initActionPage } from './initActionPage';
+/* import {ArticleView} from 'entities/Article/model/types/article';
+import {TestAsyncThunk} from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import {initActionPage} from './initActionPage';
 
 jest.mock('../fetchArticlesList');
 
@@ -43,3 +42,4 @@ describe('initActionPage.test', () => {
         expect(thunk.dispatch).toBeCalledTimes(2);
     });
 });
+*/

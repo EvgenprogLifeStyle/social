@@ -32,8 +32,6 @@ export const Page = memo((props: PageProps) => {
         callback: onScrollEnd,
     });
     useInitEffect(() => {
-        console.log(scrollTop);
-        console.log(pathname);
         wrapperRef.current.scrollTop = scrollTop;
     });
 
@@ -50,7 +48,7 @@ export const Page = memo((props: PageProps) => {
             onScroll={onScroll}
         >
             {children}
-            <div ref={triggerRef} />
+            {onScrollEnd ? <div ref={triggerRef} className={s.trigger} /> : null }
         </section>
     );
 });

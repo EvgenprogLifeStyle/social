@@ -21,7 +21,7 @@ export const fetchNextArticlesPage = createAsyncThunk<void,
             if (hasMore && !isLoading) {
                 dispatch(articlePageSliceActions.setPage(page + 1));
                 dispatch(fetchArticlesList({
-                    page: page + 1,
+                    // page: page + 1,
                 }));
             }
         },
