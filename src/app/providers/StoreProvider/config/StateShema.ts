@@ -7,7 +7,7 @@ import { LoginSchema } from 'features/AuthByUsername';
 import { ProfileSchema } from 'entities/Profile';
 import { AxiosInstance } from 'axios';
 import { ArticleDetailSchema } from 'entities/Article';
-import { ArticleDetailsCommentsSchema } from 'pages/ArticlesDetailPage';
+import { ArticleDetailsCommentsSchema, ArticleDetailsRecommendationSchema } from 'pages/ArticlesDetailPage';
 import { AddCommentFormSchema } from 'features/addCommentForm';
 import { ArticlesPageSchema } from 'pages/ArticlesPage/model/types/articlePage';
 import { ScrollSaveSchema } from 'features/ScrollSave';
@@ -22,8 +22,10 @@ export interface StateSchema {
     profile?:ProfileSchema,
     articleDetails?:ArticleDetailSchema,
     articleDetailsComments?: ArticleDetailsCommentsSchema,
-    addCommentForm?:AddCommentFormSchema
-    articlePage?:ArticlesPageSchema
+    articleDetailsRecommendations?: ArticleDetailsRecommendationSchema,
+    addCommentForm?:AddCommentFormSchema,
+    articlePage?:ArticlesPageSchema,
+
 }
 export type StateSchemaKey = keyof StateSchema
 export type MountedReducers = OptionRecord<StateSchemaKey, boolean>

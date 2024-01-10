@@ -47,7 +47,7 @@ module.exports = {
             'error',
             {
                 markupOnly: true,
-                ignoreAttribute: ['data-testid', 'to'],
+                ignoreAttribute: ['data-testid', 'to', 'target'],
             },
         ],
         'max-len': ['error', { ignoreComments: true, code: 200 }],
@@ -57,11 +57,12 @@ module.exports = {
         'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
         'no-param-reassign': 'off',
         'no-undef': 'off',
+        'no-unsafe-optional-chaining': 'off',
     },
     globals: {
         __IS_DEV__: true,
         __API__: true,
-        __PROJECT__: true
+        __PROJECT__: true,
     },
     overrides: [
         {

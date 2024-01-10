@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { memo, useCallback } from 'react';
+import { HTMLAttributeAnchorTarget, memo, useCallback } from 'react';
 import { TextBlock } from 'shared/ui/Text/Text';
 import { Icon } from 'shared/ui/Icon/Icon';
 import EyeIcon from 'shared/assets/icons/eye-20-20.svg';
@@ -10,6 +10,7 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { ArticleItemSkeleton } from 'entities/Article/ui/ArticleItem/ArticleItemSkeleton';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import {
     ArtcleTextBlock, ArticleBlockType, ArticleSchema, ArticleView,
@@ -21,19 +22,16 @@ interface ArticleItemProps {
     article?: ArticleSchema
     isLoading?:boolean
     view: ArticleView
+    target?: HTMLAttributeAnchorTarget
+
 }
 
 export const ArticleItem = memo((props: ArticleItemProps) => {
     const {
-        className, article, view, isLoading,
+        className, article, view, isLoading, target,
     } = props;
     const { t } = useTranslation();
-    const navigate = useNavigate();
-    const onOpenArticle = useCallback(
-        // eslint-disable-next-line no-unsafe-optional-chaining
-        () => navigate(RoutePath.articles_detail + article?.id),
-        [article?.id, navigate],
-    );
+
     const types = (
         <TextBlock text={article?.type.join(', ')} className={s.types} />
     );
@@ -64,9 +62,12 @@ export const ArticleItem = memo((props: ArticleItemProps) => {
                     }
 
                     <div className={s.footer}>
-                        <Button onClick={onOpenArticle} theme={ButtonTheme.OUTLINE}>
-                            {t('Читать далее...')}
-                        </Button>
+                        {/* eslint-disable-next-line no-unsafe-optional-chaining */}
+                        <AppLink target={target} to={RoutePath.articles_detail + article?.id}>
+                            <Button theme={ButtonTheme.OUTLINE}>
+                                {t('Читать далее...')}
+                            </Button>
+                        </AppLink>
                         {views}
                     </div>
                 </Card>
@@ -75,8 +76,12 @@ export const ArticleItem = memo((props: ArticleItemProps) => {
     }
 
     return (
-        <div className={classNames('', {}, [className, s[view]])}>
-            <Card className={s.card} onClick={onOpenArticle}>
+        <AppLink
+            target={target}
+            to={RoutePath.articles_detail + article?.id}
+            className={classNames('', {}, [className, s[view]])}
+        >
+            <Card className={s.card}>
                 <div className={s.imageWrapper}>
                     <img src={article?.img} className={s.img} alt={article?.title} />
                     <TextBlock text={article?.createdAt} className={s.date} />
@@ -84,11 +89,9 @@ export const ArticleItem = memo((props: ArticleItemProps) => {
                 <div className={s.infoWrapper}>
                     {types}
                     {views}
-
                 </div>
                 <TextBlock text={article?.title} className={s.title} />
             </Card>
-
-        </div>
+        </AppLink>
     );
 });
