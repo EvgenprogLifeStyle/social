@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getCanEditArticle } from 'pages/ArticlesDetailPage/model/selectors/article';
 import { getArticleDetailsData } from 'entities/Article';
-import s from './ArticlesDetailPageHeader.module.scss';
+import { HStack } from 'shared/ui/Stack';
 
 interface ArticlesDetailPageHeaderProps {
     className?: string
@@ -29,20 +29,20 @@ export const ArticlesDetailPageHeader = memo(({ className }: ArticlesDetailPageH
     }, [article?.id, navigate]);
 
     return (
-        <div className={classNames(s.ArticlesDetailPageHeader, {}, [className])}>
+        <HStack max justify="between" className={classNames('', {}, [className])}>
             <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
                 {t('Назад к списку')}
             </Button>
             {canEdit
             && (
                 <Button
-                    className={s.editBtn}
+                    className=""
                     theme={ButtonTheme.OUTLINE}
                     onClick={onEditArticle}
                 >
                     {t('Редактировать')}
                 </Button>
             )}
-        </div>
+        </HStack>
     );
 });
