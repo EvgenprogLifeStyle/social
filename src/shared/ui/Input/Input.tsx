@@ -2,6 +2,7 @@ import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import React, {
     InputHTMLAttributes, memo, useEffect, useRef, useState,
 } from 'react';
+import { HStack } from 'shared/ui/Stack';
 import s from './Input.module.scss';
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>;
@@ -56,7 +57,7 @@ export const Input = memo((props: InputProps) => {
         [s.readonly]: readonly,
     };
     return (
-        <div className={classNames(s.InputWrapper, mods, [className])}>
+        <HStack className={classNames('', mods, [className])}>
             {placeholder && (
                 <div className={s.placeholder}>
                     {`${placeholder}>`}
@@ -84,6 +85,6 @@ export const Input = memo((props: InputProps) => {
                     )}
             </div>
 
-        </div>
+        </HStack>
     );
 });

@@ -37,14 +37,14 @@ export const ProfileCard = (props :ProfileCardProps) => {
     // console.log(typeof data?.age)
     if (isLoading) {
         return (
-            <HStack justify="center" className={classNames(s.ProfileCard, {}, [className, s.loading])}>
+            <HStack justify="center" max className={classNames(s.ProfileCard, {}, [className, s.loading])}>
                 <Loader />
             </HStack>
         );
     }
     if (error) {
         return (
-            <HStack justify="center" className={classNames(s.ProfileCard, {}, [className, s.error])}>
+            <HStack justify="center" max className={classNames(s.ProfileCard, {}, [className, s.error])}>
                 <TextBlock
                     theme={TextTheme.ERROR}
                     title={t('Произошла ошибка загрузки профиля')}
