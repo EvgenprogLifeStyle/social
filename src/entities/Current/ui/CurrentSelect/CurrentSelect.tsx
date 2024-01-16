@@ -36,7 +36,7 @@ export const CurrentSelect = memo((props: CurrentSelectProps) => {
             value={value}
             items={options}
             readonly={readonly}
-            direction="top"
+            direction="top right"
         />
     );
     // return (
