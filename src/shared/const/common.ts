@@ -1,9 +1,1 @@
-export enum Current {
-    RUB='RUB',
-    USD='USD',
-    EUR='EUR'
-}
-export enum Country {
-    Russia='Russia',
-    Belarus='Belarus'
-}
+export const ARTICLE_VIEW_LOCALSTORAGE_KEY = 'articles_view';

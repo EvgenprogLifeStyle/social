@@ -1,8 +1,11 @@
 export interface User {
     id: string,
     username: string
+    avatar?:string
 }
 
 export interface UserSchema{
-    authDate?: User
+    authDate?: User,
+    _inited: boolean
+
 }

@@ -2,6 +2,7 @@
 @import "variables/global";
 @import "themes/normal";
 @import "themes/dark";
+@import "themes/blue";
 
 .app,
 .app_modal {
@@ -16,9 +17,4 @@
 
 .content-page {
     display: flex;
-}
-
-.page-wrapper {
-    flex-grow: 1;
-    padding: 20px;
 }

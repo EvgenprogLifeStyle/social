@@ -7,10 +7,15 @@
     padding: 20px;
 }
 
-.links {
+.links,
+.dropdown {
     margin-left: auto;
 }
 
 .mainLink {
     margin-right: 15px;
+}
+
+.appName {
+    width: var(--sidebar-width);
 }

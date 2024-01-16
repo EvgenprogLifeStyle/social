@@ -4,6 +4,7 @@
     position: relative;
     transition: width 0.3s;
     width: var(--sidebar-width);
+    flex-shrink: 1;
 }
 
 .switchers {
@@ -22,11 +23,10 @@
     bottom: 40px;
     position: absolute;
     right: -32px;
+    z-index: 4;
 }
 
 .items {
-    display: flex;
-    flex-direction: column;
     margin-left: 20px;
     margin-top: 20px;
 }
@@ -34,7 +34,6 @@
 .item {
     align-items: center;
     display: flex;
-    margin-top: 10px;
 }
 
 .link {

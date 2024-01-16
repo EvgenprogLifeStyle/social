@@ -3,6 +3,8 @@ import ThemeDecorator from 'shared/config/storybook/ThemeDecorator/ThemeDecorato
 import { Theme } from 'app/providers/ThemeProvider';
 import React from 'react';
 import StoreDecorator from 'shared/config/storybook/StoreDecorator/StoreDecorator';
+import { Country } from 'entities/Country';
+import { Current } from 'entities/Current/intex';
 import ProfilePage from './ProfilePage';
 
 const meta: Meta<typeof ProfilePage> = {
@@ -19,15 +21,38 @@ const meta: Meta<typeof ProfilePage> = {
 export default meta;
 type Story = StoryObj<typeof ProfilePage>;
 
-export const Light: Story = {
+export const Normal: Story = {
     args: {
+
     },
 };
-Light.decorators = [ThemeDecorator(Theme.LIGHT), StoreDecorator({})];
+Normal.decorators = [ThemeDecorator(Theme.LIGHT), StoreDecorator({
+    profile: {
+        form: {
+            username: 'Евгений',
+            lastname: 'Романенко',
+            age: 26,
+            country: Country.Belarus,
+            first: 'asd',
+            city: Current.RUB,
+        },
+    },
+})];
 
 export const Dark: Story = {
     args: {
 
     },
 };
-Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})];
+Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
+    profile: {
+        form: {
+            username: 'Евгений',
+            lastname: 'Романенко',
+            age: 26,
+            country: Country.Belarus,
+            first: 'asd',
+            city: Current.RUB,
+        },
+    },
+})];
