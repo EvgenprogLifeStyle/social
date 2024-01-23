@@ -1,8 +1,8 @@
 import { Country } from 'entities/Country';
 import { Current } from 'entities/Current/intex';
-import { updateProfileDate } from 'entities/Profile';
-import { ProfileSchema, ValidateProfileError } from '../types/profile';
+import { ProfileSchema, ValidateProfileError } from 'features/editableProfileCard';
 import { profileActions, profileReducer } from './ProfileSlice';
+import { updateProfileDate } from '../services/updateProfileDate/updateProfileDate';
 
 const data = {
     username: 'Евгений',

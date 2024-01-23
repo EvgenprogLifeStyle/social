@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Country } from 'entities/Country';
 import { Current } from 'entities/Current/intex';
-import { ValidateProfileError } from 'entities/Profile';
+import { ValidateProfileError } from 'features/editableProfileCard';
 import { ValidateProfileData } from './validateProfileData';
 
 jest.mock('axios');

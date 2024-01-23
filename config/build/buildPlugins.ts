@@ -33,11 +33,10 @@ export function buildPlugins({
     if (isDev) {
         plugins.push(new webpack.HotModuleReplacementPlugin());
         plugins.push(new BundleAnalyzerPlugin({
-            defaultSizes: 'gzip',
             openAnalyzer: false,
-
         }));
         plugins.push(new ReactRefreshWebpackPlugin());
     }
+
     return plugins;
 }

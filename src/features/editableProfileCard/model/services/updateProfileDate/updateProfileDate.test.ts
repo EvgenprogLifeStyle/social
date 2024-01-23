@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { Country } from 'entities/Country';
 import { Current } from 'entities/Current/intex';
-import { ValidateProfileError } from 'entities/Profile';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { ValidateProfileError } from 'features/editableProfileCard';
 import { updateProfileDate } from './updateProfileDate';
 
 jest.mock('axios');

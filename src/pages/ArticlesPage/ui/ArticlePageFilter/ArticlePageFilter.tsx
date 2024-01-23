@@ -10,7 +10,7 @@ import { Input } from 'shared/ui/Input/Input';
 import { SortOrder } from 'shared/types';
 import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
-import { TabItem, Tabs } from 'shared/ui/Tabs/Tabs';
+import { HStack } from 'shared/ui/Stack';
 import {
     getArticlesListOrder,
     getArticlesListSearch,
@@ -70,7 +70,7 @@ export const ArticlePageFilter = memo(({ className }: ArticlePageFilterProps) =>
 
     return (
         <div className={classNames(s.ArticlePageFilter, {}, [className])}>
-            <div className={s.sortWrapper}>
+            <HStack className={s.sortWrapper}>
                 <ArticleSortSelect
                     sort={sort}
                     onChangeSort={onChangeSort}
@@ -80,7 +80,7 @@ export const ArticlePageFilter = memo(({ className }: ArticlePageFilterProps) =>
                 />
                 <ArticleViewSelector view={view} onViewClick={onChangeView} />
 
-            </div>
+            </HStack>
             <Card className={s.search}>
                 <Input placeholder={t('Поиск')} value={search} onChange={onChangeSearch} />
             </Card>
