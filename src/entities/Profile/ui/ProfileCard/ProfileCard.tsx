@@ -5,7 +5,6 @@ import { Input } from 'shared/ui/Input/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Profile } from 'entities/Profile';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { Select } from 'shared/ui/Select/Select';
 import { Current, CurrentSelect } from 'entities/Current/intex';
 import { Country, CountrySelect } from 'entities/Country';
 import { HStack, VStack } from 'shared/ui/Stack';
@@ -72,6 +71,7 @@ export const ProfileCard = (props :ProfileCardProps) => {
                 className={s.input}
                 onChange={onChangeFirstname}
                 readonly={readonly}
+                data-testid="ProfileCard.firstname"
             />
             <Input
                 value={data?.lastname}
@@ -79,6 +79,7 @@ export const ProfileCard = (props :ProfileCardProps) => {
                 className={s.input}
                 onChange={onChangeLastname}
                 readonly={readonly}
+                data-testid="ProfileCard.lastname"
             />
             <Input
                 value={String(data?.age)}
@@ -86,6 +87,7 @@ export const ProfileCard = (props :ProfileCardProps) => {
                 className={s.input}
                 onChange={onChangeAge}
                 readonly={readonly}
+                data-testid="ProfileCard.age"
                 onKeyPress={(e) => {
                     if (!/[0-9]/.test(e.key)) {
                         e.preventDefault();

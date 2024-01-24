@@ -15,6 +15,7 @@ interface ArticleListProps {
     isLoading?: boolean
     view?: ArticleView
     target?: HTMLAttributeAnchorTarget
+    virtualized?: boolean
 }
 
 const getSkeletons = (view: ArticleView) => new Array(view === ArticleView.SMALL ? 9 : 3)
@@ -28,6 +29,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
     const { t } = useTranslation();
     const {
         className, articles, isLoading, view = ArticleView.SMALL, target,
+        virtualized = true,
     } = props;
     const renderArticle = (article: ArticleSchema) => (
         <ArticleItem
@@ -37,6 +39,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
             key={article.id}
             className={s.card}
             target={target}
+
         />
     );
 
@@ -90,17 +93,33 @@ export const ArticleList = memo((props: ArticleListProps) => {
                     ref={registerChild}
                     className={classNames('', {}, [className, s[view]])}
                 >
-                    <List
-                        height={height ?? 700}
-                        rowCount={rowCount}
-                        rowHeight={isBig ? 700 : 330}
-                        rowRenderer={rowRenderer}
-                        width={width ? width - 80 : 700}
-                        autoHeight
-                        onScroll={onChildScroll}
-                        isScrolling={isScrolling}
-                        scrollTop={scrollTop}
-                    />
+                    {virtualized
+                        ? (
+                            <List
+                                height={height ?? 700}
+                                rowCount={rowCount}
+                                rowHeight={isBig ? 700 : 330}
+                                rowRenderer={rowRenderer}
+                                width={width ? width - 80 : 700}
+                                autoHeight
+                                onScroll={onChildScroll}
+                                isScrolling={isScrolling}
+                                scrollTop={scrollTop}
+                            />
+                        )
+                        : (
+                            articles.map((item:ArticleSchema) => (
+                                <ArticleItem
+                                    view={view}
+                                    article={item}
+                                    isLoading={isLoading}
+                                    key={item.id}
+                                    className={s.card}
+                                    target={target}
+                                />
+                            ))
+                        )}
+
                     {isLoading && getSkeletons(view)}
                 </div>
 
