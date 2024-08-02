@@ -40,18 +40,15 @@ export default {
         '\\.s?css$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     },
-
     reporters: [
         'default',
         ['jest-html-reporters', {
             publicPath: '<rootDir>/reports/unit',
             filename: 'report.html',
-            openReport: false,
-            initSource: true,
+            // openReport: true,
+            inlineSource: true,
         }],
     ],
-
-    transformIgnorePatterns: ['node_modules/(?!axios)'],
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
 
@@ -116,6 +113,9 @@ export default {
 
     // Run tests from one or more projects
     // projects: undefined,
+
+    // Use this configuration option to add custom reporters to Jest
+    // reporters: undefined,
 
     // Automatically reset mock state before every test
     // resetMocks: false,

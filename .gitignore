@@ -1,7 +1,7 @@
+/build
 node_modules
 .idea
-/build
 /storybook-static
-/reports
 .loki/report.html
 .loki/report.json
+/reports

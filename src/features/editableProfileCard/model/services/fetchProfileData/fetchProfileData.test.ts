@@ -1,38 +1,36 @@
-import axios from 'axios';
-import { Country } from 'entities/Country';
-import { Current } from 'entities/Current/intex';
-import { userActions } from 'entities/User';
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { userActions } from '@/entities/User';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
 import { fetchProfileData } from './fetchProfileData';
 
-jest.mock('axios');
-
-const mockedAxios = jest.mocked(axios, true);
-
 const data = {
-    username: 'Евгений',
-    lastname: 'Романенко',
-    age: 26,
-    country: Country.Belarus,
+    username: 'admin',
+    age: 22,
+    country: Country.Ukraine,
+    lastname: 'ulbi tv',
     first: 'asd',
-    city: Current.RUB,
+    city: 'asf',
+    currency: Currency.USD,
 };
+
 describe('fetchProfileData.test', () => {
     test('success', async () => {
         const thunk = new TestAsyncThunk(fetchProfileData);
         thunk.api.get.mockReturnValue(Promise.resolve({ data }));
+
         const result = await thunk.callThunk('1');
 
         expect(thunk.api.get).toHaveBeenCalled();
         expect(result.meta.requestStatus).toBe('fulfilled');
         expect(result.payload).toEqual(data);
     });
-    // test('error', async () => {
-    //     const thunk = new TestAsyncThunk(fetchProfileData);
-    //     thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
-    //     const result = await thunk.callThunk();
-    //     expect(result.meta.requestStatus).toBe('fulfilled');
-    //     expect(result.meta.requestStatus).toBe('rejected');
-    //
-    // });
+
+    test('error login', async () => {
+        const thunk = new TestAsyncThunk(fetchProfileData);
+        thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
+        const result = await thunk.callThunk('1');
+
+        expect(result.meta.requestStatus).toBe('rejected');
+    });
 });

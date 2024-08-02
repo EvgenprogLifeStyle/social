@@ -1,19 +1,23 @@
-import { StateSchema } from 'app/providers/StoreProvider';
-import { ValidateProfileError } from 'features/editableProfileCard';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { ValidateProfileError } from '../../consts/consts';
 import { getProfileValidateErrors } from './getProfileValidateErrors';
 
 describe('getProfileValidateErrors.test', () => {
-    test('should return error', () => {
+    test('should work with filled state', () => {
         const state: DeepPartial<StateSchema> = {
             profile: {
-                validateErrors: [ValidateProfileError.INCORECT_USER_DATA],
+                validateErrors: [
+                    ValidateProfileError.SERVER_ERROR,
+                    ValidateProfileError.INCORRECT_AGE,
+                ],
             },
-
         };
-        expect(getProfileValidateErrors(state as StateSchema)).toEqual([ValidateProfileError.INCORECT_USER_DATA]);
+        expect(getProfileValidateErrors(state as StateSchema)).toEqual([
+            ValidateProfileError.SERVER_ERROR,
+            ValidateProfileError.INCORRECT_AGE,
+        ]);
     });
-
-    test('should  work with empty state', () => {
+    test('should work with empty state', () => {
         const state: DeepPartial<StateSchema> = {};
         expect(getProfileValidateErrors(state as StateSchema)).toEqual(undefined);
     });

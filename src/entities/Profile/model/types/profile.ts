@@ -1,14 +1,14 @@
-import { Country } from 'entities/Country';
-import { Current } from 'entities/Current/intex';
+import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country';
 
-export interface Profile{
-    id?: string,
-    first?: string,
-    lastname?: string,
-    age?: string | number,
-    currency?: Current,
-    country?: Country,
+export interface Profile {
+    id?: string;
+    first?: string;
+    lastname?: string;
+    age?: number,
+    currency?: Currency,
+    country?: Country;
     city?: string,
-    username?: string,
-    avatar?: string
+    username?: string;
+    avatar?: string;
 }

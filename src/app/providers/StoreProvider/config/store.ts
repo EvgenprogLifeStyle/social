@@ -1,31 +1,29 @@
-import {
-    CombinedState, configureStore, Reducer, ReducersMapObject,
-} from '@reduxjs/toolkit';
-import { counterReducer } from 'entities/Counter';
-import { userReducer } from 'entities/User';
-import { ScrollSaveReducer } from 'features/ScrollSave';
-import { $api } from 'shared/api/api';
-import { rtkApi } from 'shared/api/rtkApi';
+import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
+import { CombinedState, Reducer } from 'redux';
+import { counterReducer } from '@/entities/Counter';
+import { userReducer } from '@/entities/User';
+import { $api } from '@/shared/api/api';
+import { uiReducer } from '@/features/UI';
+import { rtkApi } from '@/shared/api/rtkApi';
+import { StateSchema, ThunkExtraArg } from './StateSchema';
 import { createReducerManager } from './reducerManager';
-import { StateSchema, ThunkExtraArg } from './StateShema';
 
 export function createReduxStore(
     initialState?: StateSchema,
     asyncReducers?: ReducersMapObject<StateSchema>,
-    // navigation?: (to: To, options?: NavigateOptions)=> void,
 ) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         counter: counterReducer,
         user: userReducer,
-        saveScroll: ScrollSaveReducer,
+        ui: uiReducer,
         [rtkApi.reducerPath]: rtkApi.reducer,
-
     };
+
     const reducerManager = createReducerManager(rootReducers);
-    const extraArg:ThunkExtraArg = {
+
+    const extraArg: ThunkExtraArg = {
         api: $api,
-        // navigation,
     };
 
     const store = configureStore({
@@ -45,4 +43,4 @@ export function createReduxStore(
     return store;
 }
 
-export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch']
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];

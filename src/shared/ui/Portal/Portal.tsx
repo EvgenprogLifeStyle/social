@@ -1,15 +1,16 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import { ReactElement, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 
 interface PortalProps {
-    children: ReactNode,
-    element?:HTMLElement
+    children: ReactNode;
+    element?: HTMLElement;
 }
 
-export const Portal = (
-    {
+export const Portal = (props: PortalProps) => {
+    const {
         children,
         element = document.body,
-    }:PortalProps,
-) => createPortal(children, element);
+    } = props;
+
+    return createPortal(children, element);
+};
