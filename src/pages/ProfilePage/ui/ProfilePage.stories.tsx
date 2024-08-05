@@ -1,58 +1,50 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import ThemeDecorator from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
 import React from 'react';
-import StoreDecorator from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Country } from 'entities/Country';
-import { Current } from 'entities/Current/intex';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from '@/app/providers/ThemeProvider';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
 import ProfilePage from './ProfilePage';
 
-const meta: Meta<typeof ProfilePage> = {
+export default {
     title: 'pages/ProfilePage',
     component: ProfilePage,
-    tags: ['autodocs'],
-
     argTypes: {
-        // backgroundColor: { control: 'color' },
+        backgroundColor: { control: 'color' },
     },
+} as ComponentMeta<typeof ProfilePage>;
 
-};
+const Template: ComponentStory<typeof ProfilePage> = (args) => <ProfilePage {...args} />;
 
-export default meta;
-type Story = StoryObj<typeof ProfilePage>;
-
-export const Normal: Story = {
-    args: {
-
-    },
-};
-Normal.decorators = [ThemeDecorator(Theme.LIGHT), StoreDecorator({
+export const Normal = Template.bind({});
+Normal.args = {};
+Normal.decorators = [StoreDecorator({
     profile: {
         form: {
-            username: 'Евгений',
-            lastname: 'Романенко',
-            age: 26,
-            country: Country.Belarus,
+            username: 'admin',
+            age: 22,
+            country: Country.Ukraine,
+            lastname: 'ulbi tv',
             first: 'asd',
-            city: Current.RUB,
+            city: 'asf',
+            currency: Currency.USD,
         },
     },
 })];
 
-export const Dark: Story = {
-    args: {
-
-    },
-};
+export const Dark = Template.bind({});
+Dark.args = {};
 Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
     profile: {
         form: {
-            username: 'Евгений',
-            lastname: 'Романенко',
-            age: 26,
-            country: Country.Belarus,
+            username: 'admin',
+            age: 22,
+            country: Country.Ukraine,
+            lastname: 'ulbi tv',
             first: 'asd',
-            city: Current.RUB,
+            city: 'asf',
+            currency: Currency.USD,
         },
     },
 })];

@@ -1,28 +1,28 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from 'app/providers/StoreProvider/config/StateShema';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 import {
-    getArticlesListHasMore,
-    getArticlesListIsLoading,
-    getArticlesListPage,
-} from '../../selectors/articlePageSelectors';
-import { articlePageSliceActions } from '../../slices/articlePageSlice';
-import { fetchArticlesList } from '../../services/fetchArticlesList';
+    getArticlesPageHasMore,
+    getArticlesPageIsLoading,
+    getArticlesPageNum,
+} from '../../selectors/articlesPageSelectors';
+import { articlesPageActions } from '../../slices/articlesPageSlice';
+import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
 
-export const fetchNextArticlesPage = createAsyncThunk<void,
+export const fetchNextArticlesPage = createAsyncThunk<
     void,
-    ThunkConfig<string>>(
+    void,
+    ThunkConfig<string>
+    >(
         'articlesPage/fetchNextArticlesPage',
         async (_, thunkApi) => {
-            const { dispatch, getState } = thunkApi;
-            const hasMore = getArticlesListHasMore(getState());
-            const page = getArticlesListPage(getState());
-            const isLoading = getArticlesListIsLoading(getState());
+            const { getState, dispatch } = thunkApi;
+            const hasMore = getArticlesPageHasMore(getState());
+            const page = getArticlesPageNum(getState());
+            const isLoading = getArticlesPageIsLoading(getState());
 
             if (hasMore && !isLoading) {
-                dispatch(articlePageSliceActions.setPage(page + 1));
-                dispatch(fetchArticlesList({
-                    // page: page + 1,
-                }));
+                dispatch(articlesPageActions.setPage(page + 1));
+                dispatch(fetchArticlesList({}));
             }
         },
     );

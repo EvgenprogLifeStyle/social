@@ -1,27 +1,22 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from 'shared/ui/Button/Button';
+import React from 'react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Select } from './Select';
 
-const meta: Meta<typeof Select> = {
+export default {
     title: 'shared/Select',
     component: Select,
-    tags: ['autodocs'],
-
     argTypes: {
-        // backgroundColor: { control: 'color' },
+        backgroundColor: { control: 'color' },
     },
+} as ComponentMeta<typeof Select>;
 
-};
+const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />;
 
-export default meta;
-type Story = StoryObj<typeof Select>;
-
-export const Primary: Story = {
-    args: {
-        label: 'Укажите значение',
-        options: [
-            { value: '123', content: '123' },
-            { value: '2222', content: '2222' },
-        ],
-    },
+export const Primary = Template.bind({});
+Primary.args = {
+    label: 'Укажите значение',
+    options: [
+        { value: '123', content: 'Первый пункт' },
+        { value: '1234', content: 'Второй пункт' },
+    ],
 };

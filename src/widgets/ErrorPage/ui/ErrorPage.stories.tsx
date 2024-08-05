@@ -1,27 +1,23 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import ThemeDecorator from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
-import { ErrorPage } from 'widgets/ErrorPage/ui/ErrorPage';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from '@/app/providers/ThemeProvider';
+import { ErrorPage } from './ErrorPage';
 
-const meta: Meta<typeof ErrorPage> = {
+export default {
     title: 'widget/ErrorPage',
     component: ErrorPage,
-    tags: ['autodocs'],
-
     argTypes: {
-        // backgroundColor: { control: 'color' },
+        backgroundColor: { control: 'color' },
     },
-};
+} as ComponentMeta<typeof ErrorPage>;
 
-export default meta;
-type Story = StoryObj<typeof ErrorPage>;
+const Template: ComponentStory<typeof ErrorPage> = (args) => <ErrorPage {...args} />;
 
-export const Light: Story = {
-    args: {},
-};
-export const Dark: Story = {
-    args: {},
-};
+export const Light = Template.bind({});
+Light.args = {};
 
+export const Dark = Template.bind({});
+Dark.args = {};
 Dark.decorators = [ThemeDecorator(Theme.DARK)];
