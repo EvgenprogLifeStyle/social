@@ -1,9 +1,8 @@
 .AppLink {
     color: var(--primary-color);
-    transition: opacity 0.3s;
 
     &:hover {
-        opacity: 0.9;
+        opacity: 0.8;
     }
 }
 
@@ -15,7 +14,6 @@
     color: var(--inverted-primary-color);
 }
 
-[type="number"]::-webkit-outer-spin-button,
-[type="number"]::-webkit-inner-spin-button {
-    appearance: none;
+.red {
+    color: red;
 }

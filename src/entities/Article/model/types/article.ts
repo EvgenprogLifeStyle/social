@@ -1,60 +1,38 @@
-import { User } from 'entities/User';
+import { User } from '@/entities/User';
+import { ArticleBlockType, ArticleType } from '../consts/articleConsts';
 
-export enum ArticleSortField {
-    VIEWS = 'views',
-    TITLE = 'title',
-    CREATED = 'createdAt'
-}
-
-export enum ArticleBlockType {
-    CODE = 'CODE',
-    IMAGE = 'IMAGE',
-    TEXT = 'TEXT'
-}
-
-export interface ArtcleBlockBase {
+export interface ArticleBlockBase {
     id: string;
     type: ArticleBlockType;
 }
 
-export interface ArtcleCodeBlock extends ArtcleBlockBase {
-    type: ArticleBlockType.CODE
-    code: string
+export interface ArticleCodeBlock extends ArticleBlockBase {
+    type: ArticleBlockType.CODE;
+    code: string;
 }
 
-export interface ArtcleImageBlock extends ArtcleBlockBase {
-    type: ArticleBlockType.IMAGE
-    src: string,
-    title: string
+export interface ArticleImageBlock extends ArticleBlockBase {
+    type: ArticleBlockType.IMAGE;
+    src: string;
+    title: string;
 }
 
-export interface ArtcleTextBlock extends ArtcleBlockBase {
-    type: ArticleBlockType.TEXT
-    paragraphs: string[]
-    title?: string
+export interface ArticleTextBlock extends ArticleBlockBase {
+    type: ArticleBlockType.TEXT;
+    paragraphs: string[];
+    title?: string;
 }
 
-export type ArticleBlock = ArtcleCodeBlock | ArtcleTextBlock | ArtcleImageBlock
+export type ArticleBlock = ArticleCodeBlock | ArticleImageBlock | ArticleTextBlock;
 
-export enum ArticleType {
-    ALL='ALL',
-    IT = 'IT',
-    SCIENCE = 'SCIENCE',
-    ECONOMICS = 'ECONOMICS'
-}
-export enum ArticleView {
-    BIG = 'BIG',
-    SMALL = 'SMALL',
-}
-
-export interface ArticleSchema {
-    id: string,
-    title: string,
-    subtitle: string,
-    img: string,
-    user: User,
-    views: number,
-    createdAt: string,
-    type: ArticleType[],
-    blocks: ArticleBlock[]
+export interface Article {
+    id: string;
+    title: string;
+    user: User;
+    subtitle: string;
+    img: string;
+    views: number;
+    createdAt: string;
+    type: ArticleType[];
+    blocks: ArticleBlock[];
 }

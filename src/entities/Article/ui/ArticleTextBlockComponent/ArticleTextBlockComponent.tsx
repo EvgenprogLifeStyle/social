@@ -1,25 +1,27 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
-import { ArtcleTextBlock } from 'entities/Article/model/types/article';
-import { TextBlock } from 'shared/ui/Text/Text';
-import s from './ArticleTextBlockComponent.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Text } from '@/shared/ui/Text/Text';
+import cls from './ArticleTextBlockComponent.module.scss';
+import { ArticleTextBlock } from '../../model/types/article';
 
 interface ArticleTextBlockComponentProps {
     className?: string;
-    block: ArtcleTextBlock
+    block: ArticleTextBlock;
 }
 
 export const ArticleTextBlockComponent = memo((props: ArticleTextBlockComponentProps) => {
-    const { block, className } = props;
-
+    const { className, block } = props;
     const { t } = useTranslation();
+
     return (
-        <div className={classNames(s.ArticleTextBlockComponent, {}, [className])}>
-            {block.title
-                && <TextBlock title={block.title} className={s.title} />}
-            {block.paragraphs
-                && block.paragraphs.map((text) => <TextBlock key={text} text={text} className={s.paragraphs} />)}
+        <div className={classNames(cls.ArticleTextBlockComponent, {}, [className])}>
+            {block.title && (
+                <Text title={block.title} className={cls.title} />
+            )}
+            {block.paragraphs.map((paragraph, index) => (
+                <Text key={paragraph} text={paragraph} className={cls.paragraph} />
+            ))}
         </div>
     );
 });

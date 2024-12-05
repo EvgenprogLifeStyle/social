@@ -1,26 +1,25 @@
-import { Decorator } from '@storybook/react';
-import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
-import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
-import { profileReducer } from 'entities/Profile';
-import { ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailSlice';
-import { addCommentFormReducer } from 'features/addCommentForm/model/slices/addCommentFormSlice';
-import { articleDetailsCommentsReducers } from 'pages/ArticlesDetailPage/model/slices/ArticleDetailsCommentsSlice';
+import { Story } from '@storybook/react';
+import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 
-const defaultAsuncReducers: ReducerList = {
+import { loginReducer } from '@/features/AuthByUsername/testing';
+import { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { articleDetailsReducer } from '@/entities/Article/testing';
+import { addCommentFormReducer } from '@/features/addCommentForm/testing';
+import { profileReducer } from '@/features/editableProfileCard/testing';
+
+const defaultAsyncReducers: ReducersList = {
     loginForm: loginReducer,
     profile: profileReducer,
     articleDetails: articleDetailsReducer,
     addCommentForm: addCommentFormReducer,
-    articleDetailsComments: articleDetailsCommentsReducers,
+    articleDetailsPage: articleDetailsReducer,
 };
-const StoreDecorator = (
+
+export const StoreDecorator = (
     state: DeepPartial<StateSchema>,
-    asyncReducers?: ReducerList,
-): Decorator => (Story) => (
-    <StoreProvider initialState={state} asyncReducers={{ ...defaultAsuncReducers, ...asyncReducers }}>
-        {Story()}
+    asyncReducers?: ReducersList,
+) => (StoryComponent: Story) => (
+    <StoreProvider initialState={state} asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}>
+        <StoryComponent />
     </StoreProvider>
 );
-
-export default StoreDecorator;

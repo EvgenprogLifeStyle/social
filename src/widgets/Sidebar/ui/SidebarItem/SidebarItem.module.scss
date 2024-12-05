@@ -1,12 +1,11 @@
 .item {
-    align-items: center;
     display: flex;
-    margin-top: 10px;
+    align-items: center;
 }
 
 .link {
     margin-left: 10px;
-    transition: 0.2s opacity;
+    opacity: 1;
 }
 
 .icon {
@@ -16,6 +15,7 @@
 .collapsed {
     .link {
         opacity: 0;
+        transition: 0.2s opacity;
         width: 0;
     }
 }

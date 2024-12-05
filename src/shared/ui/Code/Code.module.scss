@@ -3,7 +3,7 @@
     padding: 20px;
     position: relative;
     background: var(--code-bg);
-    overflow-x: auto;
+    overflow: auto;
 }
 
 .copyBtn {
@@ -12,6 +12,6 @@
     top: 20px;
 }
 
-.copyIcon {
+.copyIcon path {
     stroke: var(--primary-color);
 }

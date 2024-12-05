@@ -1,19 +1,17 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ArticleTypeTabs } from './ArticleTypeTabs';
 
-const meta: Meta<typeof ArticleTypeTabs> = {
+export default {
     title: 'entities/Article/ArticleTypeTabs',
     component: ArticleTypeTabs,
-    tags: ['autodocs'],
     argTypes: {
-        // backgroundColor: { control: 'color' },
+        backgroundColor: { control: 'color' },
     },
-};
+} as ComponentMeta<typeof ArticleTypeTabs>;
 
-export default meta;
-type Story = StoryObj<typeof ArticleTypeTabs>;
+const Template: ComponentStory<typeof ArticleTypeTabs> = (args) => <ArticleTypeTabs {...args} />;
 
-export const Primary: Story = {
-    args: {},
-};
+export const Normal = Template.bind({});
+Normal.args = {};
