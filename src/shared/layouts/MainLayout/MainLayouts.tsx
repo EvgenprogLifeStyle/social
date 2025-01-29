@@ -1,6 +1,6 @@
-import {classNames} from "@/shared/lib/classNames/classNames";
-import s from './MainLayouts.module.scss'
-import {memo, ReactElement} from "react";
+import { memo, ReactElement } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import s from './MainLayouts.module.scss';
 
 interface MainLayoutsProps {
     className?: string,
@@ -11,7 +11,9 @@ interface MainLayoutsProps {
 }
 
 export const MainLayouts = memo((props: MainLayoutsProps) => {
-    const {content, header, toolbar, sidebar, className} = props;
+    const {
+        content, header, toolbar, sidebar, className,
+    } = props;
     return (
         <div className={classNames(s.MainLayouts, {}, [className])}>
             <div className={s.sidebar}>{sidebar}</div>

@@ -26,7 +26,7 @@ export const ArticleDetailsPageHeader = memo((props: ArticleDetailsPageHeaderPro
 
     const onEditArticle = useCallback(() => {
         if (article) navigate(getRouteArticleEdit(article?.id));
-    }, [article?.id, navigate]);
+    }, [article, navigate]);
 
     return (
         <HStack max justify="between" className={classNames('', {}, [className])}>

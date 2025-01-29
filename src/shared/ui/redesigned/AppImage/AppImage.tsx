@@ -8,7 +8,6 @@ interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
     errorFallback?: ReactElement
 }
 
-
 export const AppImage = memo((props: AppImageProps) => {
     const {
         className, src, alt = 'image', errorFallback, fallback,

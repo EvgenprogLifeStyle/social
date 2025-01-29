@@ -1,6 +1,6 @@
-import type {Meta, StoryObj} from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import {ViewSelectorContainer} from './ViewSelectorContainer';
+import { ViewSelectorContainer } from './ViewSelectorContainer';
 
 const meta: Meta<typeof ViewSelectorContainer> = {
     title: 'shared/ViewSelectorContainer',

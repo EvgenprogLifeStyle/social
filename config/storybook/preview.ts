@@ -4,6 +4,7 @@ import {
     SuspenseDecorator,
 } from '../../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
 import { Theme } from '../../src/shared/const/theme';
+import { FeaturesFlagsDecorator } from '../../src/shared/config/storybook/FeaturesFlagsDecorator/FeaturesFlagsDecorator';
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
@@ -24,4 +25,9 @@ export const parameters = {
     },
 };
 
-export const decorators = [StyleDecorator, ThemeDecorator(Theme.LIGHT), SuspenseDecorator];
+export const decorators = [
+    StyleDecorator,
+    ThemeDecorator(Theme.LIGHT),
+    SuspenseDecorator,
+    FeaturesFlagsDecorator({}),
+];

@@ -3,7 +3,7 @@ import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Avatar.module.scss';
 import { AppImage } from '../../redesigned/AppImage';
 import UserIcon from '../../../assets/icons/avatar-filled.svg';
-import {Icon} from "@/shared/ui/deprecated/Icon";
+import { Icon } from '../Icon';
 import { Skeleton } from '../Skeleton';
 
 interface AvatarProps {
@@ -18,7 +18,7 @@ interface AvatarProps {
  * @deprecated
  */
 export const Avatar = ({
-    className, src, size = 100, alt, fallbackInverted
+    className, src, size = 100, alt, fallbackInverted,
 }: AvatarProps) => {
     const mods: Mods = {};
 

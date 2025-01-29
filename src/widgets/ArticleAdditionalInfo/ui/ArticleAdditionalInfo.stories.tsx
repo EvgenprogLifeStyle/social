@@ -1,6 +1,6 @@
-import type {Meta, StoryObj} from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import {ArticleAdditionalInfo} from './ArticleAdditionalInfo';
+import { ArticleAdditionalInfo } from './ArticleAdditionalInfo';
 
 const meta: Meta<typeof ArticleAdditionalInfo> = {
     title: 'shared/ArticleAdditionalInfo',

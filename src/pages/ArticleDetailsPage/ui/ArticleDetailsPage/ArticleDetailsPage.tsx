@@ -15,8 +15,8 @@ import { ArticleRating } from '@/features/articleRating';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { Card } from '@/shared/ui/deprecated/Card';
 import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout/StickyContentLayout';
-import {DetailContainer} from "@/pages/ArticleDetailsPage/ui/DetailContainer/DetailContainer";
-import {AdditionalInfoContainer} from "@/pages/ArticleDetailsPage/ui/AdditionalInfoContainer/AdditionalInfoContainer";
+import { DetailContainer } from '../DetailContainer/DetailContainer';
+import { AdditionalInfoContainer } from '../AdditionalInfoContainer/AdditionalInfoContainer';
 
 interface ArticleDetailsPageProps {
     className?: string;

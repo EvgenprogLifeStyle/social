@@ -10,11 +10,11 @@ export const Counter = () => {
     const { t } = useTranslation();
     const { increment, decrement } = useCounterActions();
     const handelIncrement = () => {
-        increment()
+        increment();
     };
 
     const handelDecrement = () => {
-        decrement()
+        decrement();
     };
 
     return (

@@ -1,6 +1,6 @@
-import type {Meta, StoryObj} from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import {MainLayouts} from './MainLayouts';
+import { MainLayouts } from './MainLayouts';
 
 const meta: Meta<typeof MainLayouts> = {
     title: 'shared/MainLayouts',

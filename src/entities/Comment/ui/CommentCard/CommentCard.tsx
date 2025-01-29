@@ -61,7 +61,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
     return (
         <ToggleFeatures
             feature="isAppRedesigned"
-            on={
+            on={(
                 <Card padding="24" border="round" max>
                     <VStack
                         data-testid="CommentCard.Content"
@@ -85,8 +85,8 @@ export const CommentCard = memo((props: CommentCardProps) => {
                         <Text text={comment.text} />
                     </VStack>
                 </Card>
-            }
-            off={
+            )}
+            off={(
                 <VStack
                     data-testid="CommentCard.Content"
                     gap="8"
@@ -110,7 +110,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
                     </AppLinkDeprecated>
                     <TextDeprecated className={cls.text} text={comment.text} />
                 </VStack>
-            }
+            )}
         />
     );
 });

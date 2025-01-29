@@ -1,6 +1,6 @@
-import type {Meta, StoryObj} from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import {uiDesignsSwitcher} from './uiDesignsSwitcher';
+import { uiDesignsSwitcher } from './uiDesignsSwitcher';
 
 const meta: Meta<typeof uiDesignsSwitcher> = {
     title: 'shared/uiDesignsSwitcher',

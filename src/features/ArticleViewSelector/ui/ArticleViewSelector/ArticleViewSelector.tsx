@@ -49,7 +49,10 @@ export const ArticleViewSelector = memo((props: ArticleViewSelectorProps) => {
                                 clickable
                                 Svg={viewType.icon}
                                 onClick={onClick(viewType.view)}
-                                className={classNames(cls.iconRedesigned, { [cls.notSelectedRedesigned]: viewType.view !== view })}
+                                className={classNames(
+                                    cls.iconRedesigned,
+                                    { [cls.notSelectedRedesigned]: viewType.view !== view },
+                                )}
                             />
                         ))}
                     </HStack>

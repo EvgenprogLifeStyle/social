@@ -3,8 +3,9 @@ import { JsonSettings } from '../types/jsonSettings';
 
 const defaultJsonSettings:JsonSettings = {
 
-}
+};
 
+// eslint-disable-next-line max-len
 export const [useJsonSettings, getJsonSettings] = buildSelector((state) => state.user.authData?.jsonSettings ?? defaultJsonSettings);
 
 // export const [useJsonSettingsByKey, getJsonSettingsByKey] = buildSelector(

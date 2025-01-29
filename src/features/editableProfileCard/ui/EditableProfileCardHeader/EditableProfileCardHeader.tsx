@@ -5,7 +5,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { HStack } from '@/shared/ui/redesigned/Stack';
-import { Text as TextDeprecated} from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
 import { Text } from '@/shared/ui/redesigned/Text';
 import { Button as ButtonDeprecated, ButtonTheme } from '@/shared/ui/deprecated/Button';
 import { Button } from '@/shared/ui/redesigned/Button';
@@ -15,7 +15,7 @@ import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/get
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
 import { Card } from '@/shared/ui/redesigned/Card';
-import {ToggleFeatures} from "@/shared/lib/features";
+import { ToggleFeatures } from '@/shared/lib/features';
 
 interface EditableProfileCardHeaderProps {
     className?: string;
@@ -47,7 +47,7 @@ export const EditableProfileCardHeader = memo(
         return (
             <ToggleFeatures
                 feature="isAppRedesigned"
-                on={
+                on={(
                     <Card padding="24" max border="partial">
                         <HStack
                             max
@@ -86,8 +86,8 @@ export const EditableProfileCardHeader = memo(
                             )}
                         </HStack>
                     </Card>
-                }
-                off={
+                )}
+                off={(
                     <HStack
                         max
                         justify="between"
@@ -125,7 +125,7 @@ export const EditableProfileCardHeader = memo(
                             </div>
                         )}
                     </HStack>
-                }
+                )}
             />
         );
     },

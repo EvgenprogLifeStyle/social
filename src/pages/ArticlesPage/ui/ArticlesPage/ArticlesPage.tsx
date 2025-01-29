@@ -13,8 +13,8 @@ import { articlesPageReducer } from '../../model/slices/articlesPageSlice';
 import cls from './ArticlesPage.module.scss';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout/StickyContentLayout';
-import {ViewSelectorContainer} from "@/pages/ArticlesPage/ui/ViewSelectorContainer/ViewSelectorContainer";
-import {FilterContainer} from "@/pages/ArticlesPage/ui/FilterContainer/FilterContainer";
+import { ViewSelectorContainer } from '../ViewSelectorContainer/ViewSelectorContainer';
+import { FilterContainer } from '../FilterContainer/FilterContainer';
 
 interface ArticlesPageProps {
     className?: string;

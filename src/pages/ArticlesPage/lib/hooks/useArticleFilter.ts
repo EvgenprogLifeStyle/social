@@ -8,7 +8,7 @@ import {
 } from '../../model/selectors/articlesPageSelectors';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
-import {ArticleSortField, ArticleType, ArticleView} from '@/entities/Article';
+import { ArticleSortField, ArticleType, ArticleView } from '@/entities/Article';
 import { articlesPageActions } from '../../model/slices/articlesPageSlice';
 import { SortOrder } from '@/shared/types/sort';
 
@@ -53,7 +53,8 @@ export function useArticleFilter() {
         fetchData();
     }, [dispatch, fetchData]);
 
-    return {view,
+    return {
+        view,
         sort,
         order,
         search,
@@ -62,5 +63,6 @@ export function useArticleFilter() {
         onChangeOrder,
         onChangeSearch,
         onChangeType,
-        onChangeView};
-};
+        onChangeView,
+    };
+}

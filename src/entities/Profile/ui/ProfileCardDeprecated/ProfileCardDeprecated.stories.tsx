@@ -1,6 +1,6 @@
-import type {Meta, StoryObj} from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import {ProfileCardDeprecated} from './ProfileCardDeprecated';
+import { ProfileCardDeprecated } from './ProfileCardDeprecated';
 
 const meta: Meta<typeof ProfileCardDeprecated> = {
     title: 'shared/ProfileCardDeprecated',

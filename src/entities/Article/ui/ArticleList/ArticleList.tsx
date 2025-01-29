@@ -49,7 +49,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
                 <HStack
                     gap="16"
                     wrap="wrap"
-                    className={classNames(cls.ArticleListRedesigned, {}, [   ])}
+                    className={classNames(cls.ArticleListRedesigned, {}, [])}
                 >
                     {articles.map((item) => (
                         <ArticleListItem

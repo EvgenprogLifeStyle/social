@@ -1,6 +1,6 @@
-import type {Meta, StoryObj} from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import {ArticlesFilters} from './ArticlesFilters';
+import { ArticlesFilters } from './ArticlesFilters';
 
 const meta: Meta<typeof ArticlesFilters> = {
     title: 'shared/ArticlesFilters',
