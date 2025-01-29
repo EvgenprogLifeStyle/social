@@ -1,4 +1,4 @@
-export interface Rating{
-    rate: number,
-    feedbackTitle: string
+export interface Rating {
+    rate: number;
+    feedback?: string;
 }

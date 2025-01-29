@@ -1,31 +1,67 @@
 import React, { Suspense, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { useTheme } from '@/app/providers/ThemeProvider';
-import { getUserInited, userActions } from '@/entities/User';
-import { AppRouter } from '@/app/providers/router';
+import { getUserInited, initAuthData } from '@/entities/User';
+import { AppRouter } from './providers/router';
 import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
+import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { PageLoader } from '@/widgets/PageLoader';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { AppLoaderLayout, MainLayouts } from '@/shared/layouts';
 
 function App() {
     const { theme } = useTheme();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const inited = useSelector(getUserInited);
 
     useEffect(() => {
-        dispatch(userActions.initAuthData());
-    }, [dispatch]);
+        if (!inited) {
+            dispatch(initAuthData());
+        }
+    }, [dispatch, inited]);
 
+    if (!inited) {
+        return (
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={(
+                    <div id="app" className={classNames('app_redesigned', {}, [theme])}>
+                        <AppLoaderLayout />
+                    </div>
+                )}
+                off={<PageLoader />}
+            />
+        );
+    }
     return (
-        <div className={classNames('app', {}, [theme])}>
-            <Suspense fallback="">
-                <Navbar />
-                <div className="content-page">
-                    <Sidebar />
-                    {inited && <AppRouter />}
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={(
+                <div id="app" className={classNames('app_redesigned', {}, [theme])}>
+                    <Suspense fallback="">
+                        <MainLayouts
+                            header={<Navbar />}
+                            content={<AppRouter />}
+                            sidebar={<Sidebar />}
+                            toolbar={<div>123</div>}
+                        />
+                    </Suspense>
                 </div>
-            </Suspense>
-        </div>
+            )}
+            off={(
+                <div id="app" className={classNames('app', {}, [theme])}>
+                    <Suspense fallback="">
+                        <Navbar />
+                        <div className="content-page">
+                            <Sidebar />
+                            <AppRouter />
+                        </div>
+                    </Suspense>
+                </div>
+            )}
+        />
     );
 }
 

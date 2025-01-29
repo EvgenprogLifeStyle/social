@@ -18,7 +18,6 @@ const Template: ComponentStory<typeof NotificationList> = (args) => <Notificatio
 
 export const Normal = Template.bind({});
 Normal.args = {};
-
 Normal.decorators = [StoreDecorator({})];
 Normal.parameters = {
     mockData: [
@@ -30,14 +29,18 @@ Normal.parameters = {
                 {
                     id: '1',
                     title: 'Уведомление',
-                    description: 'Поставьте лайк',
+                    description: 'Поставь лайк и оставь комментарий под Ulbi TV',
                 },
                 {
                     id: '2',
-                    title: 'Уведомление2',
-                    description: 'Поставьте лайк2',
+                    title: 'Уведомление 2',
+                    description: 'Поставь лайк и оставь комментарий под Ulbi TV',
                 },
-
+                {
+                    id: '3',
+                    title: 'Уведомление 3',
+                    description: 'Поставь лайк и оставь комментарий под Ulbi TV',
+                },
             ],
         },
     ],

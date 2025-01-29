@@ -1,1 +1,3 @@
-export { ArticleRatingAsync as ArticleRating } from './ui/articleRating/articleRating.async';
+export {
+    ArticleRatingAsync as ArticleRating,
+} from './ui/ArticleRating/ArticleRating.async';
