@@ -7,8 +7,8 @@ export interface User {
     username: string;
     avatar?: string;
     roles?: UserRole[];
-    features?: FeatureFlags,
-    jsonSettings?:JsonSettings
+    features?: FeatureFlags;
+    jsonSettings?: JsonSettings;
 }
 
 export interface UserSchema {

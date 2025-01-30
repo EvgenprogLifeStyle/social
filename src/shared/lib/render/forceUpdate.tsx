@@ -1,6 +1,4 @@
-import {
-    createContext, ReactNode, useContext, useMemo, useState,
-} from 'react';
+import { createContext, ReactNode, useContext, useMemo, useState } from 'react';
 
 const ForceUpdateContext = createContext({
     value: true,

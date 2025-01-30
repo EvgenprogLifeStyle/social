@@ -2,11 +2,17 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button as ButtonDeprecated, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import {
+    Button as ButtonDeprecated,
+    ButtonTheme,
+} from '@/shared/ui/deprecated/Button';
+import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input';
 import { Text as TextDeprecated, TextTheme } from '@/shared/ui/deprecated/Text';
-import { Button } from '@/shared/ui/redesigned/Button';
 import { Text } from '@/shared/ui/redesigned/Text';
-import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
@@ -15,9 +21,9 @@ import { getLoginError } from '../../model/selectors/getLoginError/getLoginError
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import cls from './LoginForm.module.scss';
-import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input';
-import { Input } from '@/shared/ui/redesigned/Input';
 import { ToggleFeatures } from '@/shared/lib/features';
+import { Button } from '@/shared/ui/redesigned/Button';
+import { Input } from '@/shared/ui/redesigned/Input';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
 
@@ -65,7 +71,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
         <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>
             <ToggleFeatures
                 feature="isAppRedesigned"
-                on={(
+                on={
                     <VStack
                         gap="16"
                         className={classNames(cls.LoginForm, {}, [className])}
@@ -100,8 +106,8 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
                             {t('Войти')}
                         </Button>
                     </VStack>
-                )}
-                off={(
+                }
+                off={
                     <div className={classNames(cls.LoginForm, {}, [className])}>
                         <TextDeprecated title={t('Форма авторизации')} />
                         {error && (
@@ -134,9 +140,10 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
                             {t('Войти')}
                         </ButtonDeprecated>
                     </div>
-                )}
+                }
             />
         </DynamicModuleLoader>
     );
 });
+
 export default LoginForm;

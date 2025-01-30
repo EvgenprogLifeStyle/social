@@ -38,6 +38,7 @@ const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
     [TextSize.M]: 'h2',
     [TextSize.L]: 'h1',
 };
+
 /**
  * Устарел, используем новые компоненты из папки redesigned
  * @deprecated
@@ -72,10 +73,7 @@ export const Text = memo((props: TextProps) => {
                 </HeaderTag>
             )}
             {text && (
-                <p
-                    className={cls.text}
-                    data-testid={`${dataTestId}.Paragraph`}
-                >
+                <p className={cls.text} data-testid={`${dataTestId}.Paragraph`}>
                     {text}
                 </p>
             )}

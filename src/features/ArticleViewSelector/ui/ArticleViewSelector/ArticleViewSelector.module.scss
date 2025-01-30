@@ -4,12 +4,10 @@
     }
 }
 
-.ArticleViewSelectorRedesigned {
 
-}
-.iconRedesigned{
-    fill: var(--icon-redesigned);
-}
-.notSelectedRedesigned {
-    fill: var(--light-bg-redesigned);
+
+.ArticleViewSelectorRedesigned {
+    .notSelected {
+        color: var(--light-bg-redesigned);
+    }
 }

@@ -1,2 +1,2 @@
-// clear
-console.log('clear');
+// path/fs
+console.log('CLEAR CACHE');

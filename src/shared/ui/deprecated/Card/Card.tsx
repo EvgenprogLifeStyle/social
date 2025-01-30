@@ -13,6 +13,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
     theme?: CardTheme;
     max?: boolean;
 }
+
 /**
  * Устарел, используем новые компоненты из папки redesigned
  * @deprecated
@@ -28,7 +29,10 @@ export const Card = memo((props: CardProps) => {
 
     return (
         <div
-            className={classNames(cls.Card, { [cls.max]: max }, [className, cls[theme]])}
+            className={classNames(cls.Card, { [cls.max]: max }, [
+                className,
+                cls[theme],
+            ])}
             {...otherProps}
         >
             {children}

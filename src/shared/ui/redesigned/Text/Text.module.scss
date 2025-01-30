@@ -68,8 +68,9 @@
         font: var(--font-l-redesigned);
     }
 }
-.bold{
-    .text,.title{
-        font-weight: 700;
+
+.bold {
+    .title, .text {
+       font-weight: 700;
     }
 }

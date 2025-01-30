@@ -1,5 +1,7 @@
 import { Story } from '@storybook/react';
-import { getAllFeatureFlags, setFeatureFlags } from '@/shared/lib/features/lib/setGetFeatures';
+import { setFeatureFlags } from '@/shared/lib/features';
+import { getAllFeatureFlags } from '@/shared/lib/features/lib/setGetFeatures';
+// eslint-disable-next-line ulbi-tv-plugin/layer-imports
 
 export const NewDesignDecorator = (StoryComponent: Story) => {
     setFeatureFlags({ ...getAllFeatureFlags(), isAppRedesigned: true });

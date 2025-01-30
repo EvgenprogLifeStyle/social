@@ -14,27 +14,34 @@ interface TabsProps {
     tabs: TabItem[];
     value: string;
     onTabClick: (tab: TabItem) => void;
-    direction?: FlexDirection
+    direction?: FlexDirection;
 }
 
 export const Tabs = memo((props: TabsProps) => {
-    const {
-        className, tabs, onTabClick, value, direction = 'row',
-    } = props;
+    const { className, tabs, onTabClick, value, direction = 'row' } = props;
 
-    const clickHandle = useCallback((tab: TabItem) => () => {
-        onTabClick(tab);
-    }, [onTabClick]);
+    const clickHandle = useCallback(
+        (tab: TabItem) => () => {
+            onTabClick(tab);
+        },
+        [onTabClick],
+    );
 
     return (
-        <Flex direction={direction} align="start" gap="8" className={classNames(cls.Tabs, {}, [className])}>
+        <Flex
+            direction={direction}
+            gap="8"
+            align="start"
+            className={classNames(cls.Tabs, {}, [className])}
+        >
             {tabs.map((tab) => {
                 const isSelected = tab.value === value;
-
                 return (
                     <Card
                         variant={isSelected ? 'light' : 'normal'}
-                        className={classNames(cls.tab, { [cls.selected]: isSelected }, [])}
+                        className={classNames(cls.tab, {
+                            [cls.selected]: isSelected,
+                        })}
                         key={tab.value}
                         onClick={clickHandle(tab)}
                         border="round"

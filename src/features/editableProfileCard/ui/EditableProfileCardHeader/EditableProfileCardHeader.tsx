@@ -7,15 +7,18 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { HStack } from '@/shared/ui/redesigned/Stack';
 import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
 import { Text } from '@/shared/ui/redesigned/Text';
-import { Button as ButtonDeprecated, ButtonTheme } from '@/shared/ui/deprecated/Button';
-import { Button } from '@/shared/ui/redesigned/Button';
+import {
+    Button as ButtonDeprecated,
+    ButtonTheme,
+} from '@/shared/ui/deprecated/Button';
 import { getUserAuthData } from '@/entities/User';
 import { profileActions } from '../../model/slice/profileSlice';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
-import { Card } from '@/shared/ui/redesigned/Card';
 import { ToggleFeatures } from '@/shared/lib/features';
+import { Button } from '@/shared/ui/redesigned/Button';
+import { Card } from '@/shared/ui/redesigned/Card';
 
 interface EditableProfileCardHeaderProps {
     className?: string;
@@ -47,8 +50,8 @@ export const EditableProfileCardHeader = memo(
         return (
             <ToggleFeatures
                 feature="isAppRedesigned"
-                on={(
-                    <Card padding="24" max border="partial">
+                on={
+                    <Card padding="24" fullWidth border="partial">
                         <HStack
                             max
                             justify="between"
@@ -86,8 +89,8 @@ export const EditableProfileCardHeader = memo(
                             )}
                         </HStack>
                     </Card>
-                )}
-                off={(
+                }
+                off={
                     <HStack
                         max
                         justify="between"
@@ -125,7 +128,7 @@ export const EditableProfileCardHeader = memo(
                             </div>
                         )}
                     </HStack>
-                )}
+                }
             />
         );
     },

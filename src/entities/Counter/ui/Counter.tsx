@@ -8,28 +8,30 @@ export const Counter = () => {
     const dispatch = useDispatch();
     const counterValue = useCounterValue();
     const { t } = useTranslation();
-    const { increment, decrement } = useCounterActions();
-    const handelIncrement = () => {
+    const { decrement, increment, add } = useCounterActions();
+
+    const handleInc = () => {
         increment();
     };
 
-    const handelDecrement = () => {
+    const handleDec = () => {
         decrement();
+    };
+
+    const handleAddFive = () => {
+        add(5);
     };
 
     return (
         <div>
             <h1 data-testid="value-title">{counterValue}</h1>
-            <Button
-                onClick={handelIncrement}
-                data-testid="increment-btn"
-            >
+            <Button onClick={handleAddFive} data-testid="increment-btn5">
+                {t('add5')}
+            </Button>
+            <Button onClick={handleInc} data-testid="increment-btn">
                 {t('increment')}
             </Button>
-            <Button
-                data-testid="decrement-btn"
-                onClick={handelDecrement}
-            >
+            <Button data-testid="decrement-btn" onClick={handleDec}>
                 {t('decrement')}
             </Button>
         </div>

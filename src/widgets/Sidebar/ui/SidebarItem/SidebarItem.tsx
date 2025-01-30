@@ -1,7 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
-import { AppLink as AppLinkDeprecated, AppLinkTheme } from '@/shared/ui/deprecated/AppLink';
+import {
+    AppLink as AppLinkDeprecated,
+    AppLinkTheme,
+} from '@/shared/ui/deprecated/AppLink';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { getUserAuthData } from '@/entities/User';
 import { SidebarItemType } from '../../model/types/sidebar';
@@ -26,31 +29,30 @@ export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
     return (
         <ToggleFeatures
             feature="isAppRedesigned"
-            on={(
+            on={
                 <AppLink
                     to={item.path}
+                    className={classNames(cls.itemRedesigned, {
+                        [cls.collapsedRedesigned]: collapsed,
+                    })}
                     activeClassName={cls.active}
-                    className={classNames(cls.itemRedesigned, { [cls.collapsedRedesigned]: collapsed })}
                 >
                     <Icon Svg={item.Icon} />
-                    <span className={cls.link}>
-                        {t(item.text)}
-                    </span>
+                    <span className={cls.link}>{t(item.text)}</span>
                 </AppLink>
-            )}
-            off={(
+            }
+            off={
                 <AppLinkDeprecated
                     theme={AppLinkTheme.SECONDARY}
                     to={item.path}
-                    className={classNames(cls.item, { [cls.collapsed]: collapsed })}
+                    className={classNames(cls.item, {
+                        [cls.collapsed]: collapsed,
+                    })}
                 >
                     <item.Icon className={cls.icon} />
-                    <span className={cls.link}>
-                        {t(item.text)}
-                    </span>
+                    <span className={cls.link}>{t(item.text)}</span>
                 </AppLinkDeprecated>
-            )}
+            }
         />
-
     );
 });

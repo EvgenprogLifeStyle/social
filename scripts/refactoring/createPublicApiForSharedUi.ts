@@ -12,7 +12,14 @@ const sharedUiDirectory = project.getDirectory(uiPath);
 const componentsDirs = sharedUiDirectory?.getDirectories();
 
 function isAbsolute(value: string) {
-    const layers = ['app', 'shared', 'entities', 'features', 'widgets', 'pages'];
+    const layers = [
+        'app',
+        'shared',
+        'entities',
+        'features',
+        'widgets',
+        'pages',
+    ];
     return layers.some((layer) => value.startsWith(layer));
 }
 
@@ -21,8 +28,11 @@ componentsDirs?.forEach((directory) => {
     const indexFile = directory.getSourceFile(indexFilePath);
 
     if (!indexFile) {
-        const sourceCode = `export * from './${directory.getBaseName()}';`;
-        const file = directory.createSourceFile(indexFilePath, sourceCode, { overwrite: true });
+        const sourceCode = `export * from './${directory.getBaseName()}'`;
+        const file = directory.createSourceFile(indexFilePath, sourceCode, {
+            overwrite: true,
+        });
+
         file.save();
     }
 });
@@ -31,15 +41,15 @@ files.forEach((sourceFile) => {
     const importDeclarations = sourceFile.getImportDeclarations();
     importDeclarations.forEach((importDeclaration) => {
         const value = importDeclaration.getModuleSpecifierValue();
-        const valueWithourAlias = value.replace('@/', '');
-        const segments = valueWithourAlias.split('/');
+        const valueWithoutAlias = value.replace('@/', '');
+
+        const segments = valueWithoutAlias.split('/');
 
         const isSharedLayer = segments?.[0] === 'shared';
-        const isUiSlices = segments?.[1] === 'ui';
+        const isUiSlice = segments?.[1] === 'ui';
 
-        if (isAbsolute(valueWithourAlias) && isSharedLayer && isUiSlices) {
-            const result = valueWithourAlias.split('/').slice(0, 3).join('/');
-
+        if (isAbsolute(valueWithoutAlias) && isSharedLayer && isUiSlice) {
+            const result = valueWithoutAlias.split('/').slice(0, 3).join('/');
             importDeclaration.setModuleSpecifier(`@/${result}`);
         }
     });

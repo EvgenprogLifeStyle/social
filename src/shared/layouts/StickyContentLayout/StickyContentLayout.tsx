@@ -10,10 +10,8 @@ interface StickyContentLayoutProps {
 }
 
 export const StickyContentLayout = memo((props: StickyContentLayoutProps) => {
-    const {
-        className, content, left, right,
-    } = props;
-    console.log(left);
+    const { className, content, left, right } = props;
+
     return (
         <div className={classNames(cls.MainLayout, {}, [className])}>
             {left && <div className={cls.left}>{left}</div>}

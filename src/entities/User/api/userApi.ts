@@ -3,8 +3,8 @@ import { User } from '../model/types/user';
 import { JsonSettings } from '../model/types/jsonSettings';
 
 interface SetJsonSettingsArg {
-    userId: string,
-    jsonSettings: JsonSettings
+    userId: string;
+    jsonSettings: JsonSettings;
 }
 
 const userApi = rtkApi.injectEndpoints({
@@ -18,7 +18,7 @@ const userApi = rtkApi.injectEndpoints({
                 },
             }),
         }),
-        getJsonSettings: build.query<User, string>({
+        getUserDataById: build.query<User, string>({
             query: (userId) => ({
                 url: `/users/${userId}`,
                 method: 'GET',
@@ -27,7 +27,7 @@ const userApi = rtkApi.injectEndpoints({
     }),
 });
 
-// export const useNotifications = notificationApi.useGetNotificationsQuery;
+export const setJsonSettingsMutation =
+    userApi.endpoints.setJsonSettings.initiate;
 
-export const setJsonSettingsMutation = userApi.endpoints.setJsonSettings.initiate;
-export const getJsonSettingsQuery = userApi.endpoints.getJsonSettings.initiate;
+export const getUserDataByIdQuery = userApi.endpoints.getUserDataById.initiate;

@@ -1,1 +1,1 @@
-export { ArticleAdditionalInfo } from './ui/ArticleAdditionalInfo';
+export { ArticleAdditionalInfo } from './ui/ArticleAdditionalInfo/ArticleAdditionalInfo';

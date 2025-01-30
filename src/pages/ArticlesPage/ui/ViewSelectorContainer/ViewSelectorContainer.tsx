@@ -1,21 +1,22 @@
 import { memo } from 'react';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { ArticleViewSelector } from '@/features/ArticleViewSelector';
-import { useArticleFilter } from '../../lib/hooks/useArticleFilter';
+import { useArticleFilters } from '../../lib/hooks/useArticleFilters';
 
 interface ViewSelectorContainerProps {
-    className?: string
+    className?: string;
 }
 
-export const ViewSelectorContainer = memo(({ className }: ViewSelectorContainerProps) => {
-    const dispatch = useAppDispatch();
-    const { view, onChangeView } = useArticleFilter();
+export const ViewSelectorContainer = memo(
+    (props: ViewSelectorContainerProps) => {
+        const { className } = props;
+        const { view, onChangeView } = useArticleFilters();
 
-    return (
-        <ArticleViewSelector
-            className={className}
-            view={view}
-            onViewClick={onChangeView}
-        />
-    );
-});
+        return (
+            <ArticleViewSelector
+                className={className}
+                view={view}
+                onViewClick={onChangeView}
+            />
+        );
+    },
+);

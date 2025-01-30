@@ -1,14 +1,14 @@
 import { rtkApi } from '@/shared/api/rtkApi';
 import { FeatureFlags } from '@/shared/types/featureFlags';
 
-interface UpdateFeaturesFlagsOptions {
-    userId: string,
-    features: Partial<FeatureFlags>
+interface UpdateFeatureFlagsOptions {
+    userId: string;
+    features: Partial<FeatureFlags>;
 }
 
 const featureFlagsApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
-        updateFeaturesFlags: build.mutation<void, UpdateFeaturesFlagsOptions>({
+        updateFeatureFlags: build.mutation<void, UpdateFeatureFlagsOptions>({
             query: ({ userId, features }) => ({
                 url: `/users/${userId}`,
                 method: 'PATCH',
@@ -20,4 +20,5 @@ const featureFlagsApi = rtkApi.injectEndpoints({
     }),
 });
 
-export const updateFeatureFlagsMutation = featureFlagsApi.endpoints.updateFeaturesFlags.initiate;
+export const updateFeatureFlagsMutation =
+    featureFlagsApi.endpoints.updateFeatureFlags.initiate;

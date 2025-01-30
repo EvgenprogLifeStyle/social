@@ -2,10 +2,10 @@ import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card';
 import { Card as CardRedesigned } from '@/shared/ui/redesigned/Card';
-import { ArticleView } from '../../model/consts/articleConsts';
-import cls from './ArticleListItem.module.scss';
 import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
 import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
+import { ArticleView } from '../../model/consts/articleConsts';
+import cls from './ArticleListItem.module.scss';
 import { ToggleFeatures, toggleFeatures } from '@/shared/lib/features';
 
 interface ArticleListItemSkeletonProps {
@@ -61,16 +61,16 @@ export const ArticleListItemSkeleton = memo(
                 >
                     <ToggleFeatures
                         feature="isAppRedesigned"
-                        on={(
+                        on={
                             <CardRedesigned border="round" className={cls.card}>
                                 {cardContent}
                             </CardRedesigned>
-                        )}
-                        off={(
+                        }
+                        off={
                             <CardDeprecated className={cls.card}>
                                 {cardContent}
                             </CardDeprecated>
-                        )}
+                        }
                     />
                 </div>
             );
@@ -80,15 +80,15 @@ export const ArticleListItemSkeleton = memo(
             <>
                 <ToggleFeatures
                     feature="isAppRedesigned"
-                    on={(
+                    on={
                         <Skeleton
                             width="100%"
                             height={150}
                             border="32px"
                             className={cls.img}
                         />
-                    )}
-                    off={(
+                    }
+                    off={
                         <div className={cls.imageWrapper}>
                             <Skeleton
                                 width={200}
@@ -96,7 +96,7 @@ export const ArticleListItemSkeleton = memo(
                                 className={cls.img}
                             />
                         </div>
-                    )}
+                    }
                 />
                 <div className={cls.infoWrapper}>
                     <Skeleton width={130} height={16} />
@@ -109,16 +109,16 @@ export const ArticleListItemSkeleton = memo(
             <div className={classNames(mainClass, {}, [className, cls[view]])}>
                 <ToggleFeatures
                     feature="isAppRedesigned"
-                    on={(
+                    on={
                         <CardRedesigned border="round" className={cls.card}>
                             {cardContent}
                         </CardRedesigned>
-                    )}
-                    off={(
+                    }
+                    off={
                         <CardDeprecated className={cls.card}>
                             {cardContent}
                         </CardDeprecated>
-                    )}
+                    }
                 />
             </div>
         );

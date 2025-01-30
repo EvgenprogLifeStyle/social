@@ -4,6 +4,7 @@ import './Loader.scss';
 interface LoaderProps {
     className?: string;
 }
+
 /**
  * Устарел, используем новые компоненты из папки redesigned
  * @deprecated

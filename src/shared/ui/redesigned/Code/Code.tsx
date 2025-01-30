@@ -22,7 +22,7 @@ export const Code = memo((props: CodeProps) => {
     return (
         <ToggleFeatures
             feature="isAppRedesigned"
-            on={(
+            on={
                 <pre
                     className={classNames(cls.CodeRedesigned, {}, [className])}
                 >
@@ -34,8 +34,8 @@ export const Code = memo((props: CodeProps) => {
                     />
                     <code>{text}</code>
                 </pre>
-            )}
-            off={(
+            }
+            off={
                 <pre className={classNames(cls.Code, {}, [className])}>
                     <Button
                         onClick={onCopy}
@@ -46,7 +46,7 @@ export const Code = memo((props: CodeProps) => {
                     </Button>
                     <code>{text}</code>
                 </pre>
-            )}
+            }
         />
     );
 });

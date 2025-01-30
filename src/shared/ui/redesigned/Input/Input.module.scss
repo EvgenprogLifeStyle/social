@@ -4,7 +4,6 @@
     border-radius: 48px;
     padding: 8px 16px;
     border: 2px solid var(--icon-redesigned);
-    height: 32px;
     width: 100%;
 }
 
@@ -48,7 +47,7 @@
     background: none;
 
     &::placeholder {
-        color: var(--hint-redesigned);
+       color: var(--hint-redesigned);
     }
 }
 

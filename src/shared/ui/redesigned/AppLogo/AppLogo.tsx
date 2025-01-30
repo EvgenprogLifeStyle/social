@@ -5,8 +5,8 @@ import AppSvg from '@/shared/assets/icons/app-image.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface AppLogoProps {
-    className?: string,
-    size?:number
+    className?: string;
+    size?: number;
 }
 
 export const AppLogo = memo(({ className, size = 50 }: AppLogoProps) => {
